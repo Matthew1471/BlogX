@@ -1,0 +1,14 @@
+<Ron> I looked at your suggested changes and decided to do some programming myself. 
+<Ron> I incorporated your changes and added a piece of code to change the pull down menu for the category. 
+<Ron> I also added the possibility to give a Category when starting AddEdit.asp. 
+<Ron> (I use it on the command line in a link in the standard “About me” entry).
+<Ron> 
+<Ron> I added to the EditEntry.asp code the possibility to change the date. 
+<Ron> If you find this useful you can maybe add it to your standard code with an option in the config file.
+<Ron> 
+<Ron> I attached the two files in a zip archive.
+<Ron> 
+<Ron> Groetjes, Ron
+
+<Matthew1471> Replace the following 2 files in your "Admin" directory to use Ron's version, 
+<Matthew1471> To set a default category you call it from the querystring e.g. AddEntry.asp?AddCat=Fun

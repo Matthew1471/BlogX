@@ -1,0 +1,6 @@
+*
+The Default Theme (V1.2)
+A <a Href="http://SimpleGeek.com/">SimpleGeek.com</a> BlogX .Net Clone
+*
+Matthew Roberts
+http://matthew1471.co.uk/

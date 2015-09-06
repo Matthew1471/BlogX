@@ -1,0 +1,374 @@
+/* Generic */
+BODY {
+  BORDER: 0px;
+  MARGIN: 0px;
+  PADDING: 0px;
+  FONT: 9pt Trebuchet, Sans-Serif;
+  COLOR: black;
+}
+P {
+  LINE-HEIGHT: 1.25em;
+  FONT-FAMILY: verdana, Sans-Serif;
+  COLOR: black;
+}
+A {
+  FONT-WEIGHT: bold;
+  TEXT-DECORATION: none;
+}
+A:hover {
+	TEXT-DECORATION: underline;
+}
+TABLE {
+  FONT-SIZE: 1em;
+  FONT-FAMILY: Trebuchet, Sans-Serif;
+}
+INPUT {
+  FONT-SIZE: 1em;
+  FONT-FAMILY: Trebuchet, Sans-Serif;
+}
+SELECT {
+  FONT-SIZE: 1em;
+  FONT-FAMILY: Trebuchet, Sans-Serif;
+}
+TEXTAREA {
+  FONT-SIZE: 1em;
+  FONT-FAMILY: Trebuchet, Sans-Serif;
+}
+INPUT {
+  VERTICAL-ALIGN: middle;
+}
+SELECT {
+  VERTICAL-ALIGN: middle;
+}
+TEXTAREA {
+  VERTICAL-ALIGN: middle;
+}
+DIV#header {
+  PADDING: 0.5em 0px 0.5em 0px;
+  BACKGROUND-COLOR: #9999ff;
+  MARGIN-BOTTOM: 1em;
+  COLOR: black;
+  POSITION: relative
+}
+DIV#header P#sideTitle {
+  RIGHT: 12px;
+  POSITION: absolute;
+  TOP: 2.5em;
+  TEXT-ALIGN: right;
+}
+.blogTitleSub {
+  DISPLAY: block;
+}
+.blogTitleSubDisclaimer {
+  DISPLAY: block;
+}
+H1#title {
+  MARGIN: 0px 12px;
+}
+P#byline {
+  MARGIN: 0px 12px;
+  FONT-STYLE: italic;
+}
+DIV#content {
+  FLOAT: left;
+  MARGIN: 0.5em 1.5em;
+  WIDTH: 60%;
+}
+DIV.date {
+  PADDING-RIGHT: 0px;
+  MARGIN-BOTTOM: 1em;
+}
+DIV.date H2 {
+  FONT-SIZE: 1.6em;
+  MARGIN: 0px 0px 1em 0em;
+  FONT-STYLE: italic;
+  TEXT-ALIGN: left;
+}
+
+
+/* Entry */
+
+DIV.entry {
+  MARGIN-BOTTOM: 1em;
+  BORDER-BOTTOM: #ccc 1px solid;
+  BORDER-RIGHT: #ccc 1px solid;
+}
+.entryTitle A {
+	COLOR: black
+}
+H3.entryTitle {
+  PADDING: 0.2em;
+  MARGIN: 0px;
+  FONT-SIZE: 1.2em;
+  BACKGROUND-COLOR: #ccccff;
+  COLOR: black;
+  FONT-FAMILY: Verdana, Sans-Serif
+}
+DIV.entryBody {
+  PADDING: 0.5em;
+  OVERFLOW: auto;
+  WHITE-SPACE: normal;   /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+  WORD-WRAP: break-word; /* IE 5.5+ */
+}
+DIV.entryBody P {
+  MARGIN-TOP: 0.2em;
+}
+P.permalink {
+  FLOAT: right;
+}
+P.entryFooter {
+  FONT-SIZE: 0.9em;
+  MARGIN: 0.5em;
+  TEXT-ALIGN: right;
+}
+SPAN.permalink {
+	COLOR: #999
+}
+SPAN.categories {
+	COLOR: #999
+}
+SPAN.comments {
+	COLOR: #999
+}
+SPAN.permalink A {
+	COLOR: #999
+}
+SPAN.categories A {
+	COLOR: #999
+}
+SPAN.comments A {
+	COLOR: #999
+}
+P.categories {
+	PADDING-RIGHT: 1em; FLOAT: right
+}
+
+/* Comments */
+
+DIV.comment {
+	BORDER-RIGHT: #ccc 1px solid; MARGIN-BOTTOM: 1em; BORDER-BOTTOM: #ccc 1px solid
+  OVERFLOW: auto;
+  WHITE-SPACE: normal;   /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+  WORD-WRAP: break-word; /* IE 5.5+ */ 
+}
+H3.commentTitle {
+	background: #ccccff; PADDING-RIGHT: 0.2em; MARGIN-TOP: 0px; PADDING-LEFT: 0.2em; FONT-SIZE: 1em; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0.2em; COLOR: black; PADDING-TOP: 0.2em; FONT-FAMILY: Verdana, Sans-Serif
+}
+DIV.commentBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em
+}
+DIV.commentBody P {
+	MARGIN-TOP: 0.2em
+}
+P.commentFooter {
+	FONT-SIZE: 0.9em; MARGIN: 0.5em; TEXT-ALIGN: right
+}
+DIV.commentBody FORM P {
+	MARGIN: 0em; LINE-HEIGHT: 1em
+}
+DIV.commentBody FORM TEXTAREA {
+	WIDTH: 75%; HEIGHT: 7em
+}
+
+/* Navigation */
+
+DIV.sidebar {
+	FONT-SIZE: smaller; FLOAT: left; WIDTH: 30%;
+}
+DIV.sidebar UL {
+	MARGIN: 0.5em; LIST-STYLE-TYPE: none
+}
+DIV.section {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN: 0.5em 2em 2em; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+
+DIV.section ul {
+  margin-left: 0;
+  padding-left: 1em;
+}
+
+DIV.section li {
+  margin: 0;
+  padding: 0;
+}
+
+TABLE.navCalendar {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN: 0.5em 2em 2em; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+DIV.section H3 {
+	PADDING-RIGHT: 0.2em; PADDING-LEFT: 0.2em; FONT-SIZE: 1.2em; BACKGROUND: #eee; PADDING-BOTTOM: 0.2em; MARGIN: 0px; TEXT-TRANSFORM: uppercase; PADDING-TOP: 0.2em
+}
+DIV.sectionBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; COLOR: Black;
+	overflow: auto;
+}
+TABLE.blogCal A {
+	COLOR: #666
+}
+TABLE.navCalendar TABLE TD {
+	FONT-SIZE: 8pt
+}
+.navTodayStyle {
+	BACKGROUND: #eee
+}
+.navSelectorStyle {
+	BACKGROUND: #eee
+}
+.navDayStyle {
+	
+}
+.navNextPrevStyle {
+	VERTICAL-ALIGN: baseline
+}
+.navDayHeader {
+	FONT-WEIGHT: bold
+}
+.navSelectedDayStyle {
+	FONT-WEIGHT: bold
+}
+.navTitleStyle {
+	FONT-WEIGHT: bold
+}
+.navWeekendDayStyle {
+	
+}
+.navOtherMonthDayStyle {
+	BACKGROUND: #f3f3f3
+}
+.navCalendar {
+	BORDER-LEFT-COLOR: #eee; BORDER-BOTTOM-COLOR: #eee; BORDER-TOP-COLOR: #eee; BORDER-RIGHT-COLOR: #eee
+}
+DIV.section FORM {
+	MARGIN: 0.5em
+}
+DIV#login P {
+	MARGIN: 0.2em 0px
+}
+
+/* Footer */
+
+DIV#footer {
+	CLEAR: both; PADDING-RIGHT: 2em; PADDING-LEFT: 2em; FONT-SIZE: smaller; PADDING-BOTTOM: 0.5em; MARGIN: 0.5em 2em; PADDING-TOP: 0.5em
+}
+DIV#footer P {
+	MARGIN: 0.2em 0px
+}
+A.standardsButton {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.standardsButton:hover {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.standardsButton:visited {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+
+/*-- Fake IE Information Bar --*/
+
+body {
+	/* overflow: hidden; */
+	margin: 0 !important;
+	padding: 0 !important; /* required for Opera to have 0 margin */
+}
+
+#infobar {
+    font-size: .9em;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: normal;
+
+    /* CSS 2, so theoretically it will be ignored in non compliant browsers */
+    font: message-box;
+}
+
+#infobar a, #infobar a:link, #infobar a:visited, #infobar a:active {
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+    color: InfoText;
+    background: InfoBackground url(/Images/warning.gif) no-repeat fixed .3em .3em;
+    padding: .45em .3em .45em 2em;
+    border-bottom: .16em outset;
+    text-decoration: none;
+    cursor: default;
+    font-weight: normal;
+}
+
+#infobar a:hover {
+    color: HighlightText;
+    background: Highlight url(/Images/warning2.gif) no-repeat fixed .3em .3em;
+}
+
+/* A fake viewplot for IE information bar */
+#viewplot {
+    width: 100%;
+    padding: 1em;   /* Please set this to the value as that of your <body> */
+}
+
+/* -- Photo CSS --*/
+
+.photo_left {
+  clear: left; 
+  float: left;
+  padding: 2px 10px 5px 0px; 
+  width: 180px; }
+
+.photo_img {
+  margin: 0px;
+  padding: 0px; }
+
+.clear_left {
+  clear: right; }
+
+/* image shadow */
+.dropshadow {
+  clear: both;
+  float:left;
+  background: url(/Images/shadowAlpha.png) no-repeat bottom right !important;
+  background: url(/Images/shadow.gif) no-repeat bottom right;
+  margin: 10px 13px 0 6px !important;
+  margin: 20px 7px 0 3px;
+
+}
+
+.dropshadow img
+{
+	display: inline;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
+/* image shadow */
+.dropshadowr {
+  clear: both;
+  float:right;
+  background: url(/Images/shadowAlpha.png) no-repeat bottom right !important;
+  background: url(/Images/shadow.gif) no-repeat bottom right;
+  margin: 20px 6px 0 30px !important;
+  margin: 30px 3px 0 20px;
+
+
+}
+
+.dropshadowr  img
+{
+	display: block;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
+.adHeadline {font: bold 10pt Arial; text-decoration: underline; color: blue;}
+.adText {font: normal 10pt Arial; text-decoration: none; color: black;}
+
+#AdvancedTools{ 
+display : inline;
+}
+#AdvancedButton{ 
+display : none;
+}

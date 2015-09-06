@@ -1,0 +1,16 @@
+[Version]
+Version=2.4.0.1
+
+[Base64.dll <000A>]
+Dest=$(WinSysPath)
+Date=03/06/2001
+Time=04:14
+Version=2.4.0.1
+CABFilename=
+Uses1=MSVBVM60.DLL
+Uses2=OLEAUT32.DLL
+Uses3=OLEPRO32.DLL
+Uses4=ASYCFILT.DLL
+Uses5=STDOLE2.TLB
+Uses6=COMCAT.DLL
+Uses7=VB6ES.DLL

@@ -1,0 +1,21 @@
+***** HACK INFORMATION ******
+
+-- NAV.asp --
+1. Loads In *ALL* Categories from Current Entry 
+2. Splits categories based on the ", " expression to a Temp Array
+3. Merges categories Into Main Array
+4. Sorts Array alphabetically (To remove duplication)
+
+-- ViewCat.asp --
+1. Executes an ADODB statement with the "LIKE" query in it, so it can pick up an extract from the categories
+
+
+*****************************
+Limitations - Categories are forced to "Title Case" as, Sorting Sub is CaSe SeNsItIvE
+	    - BubbleSort can be slow for a large amount of data
+*****************************
+Other Information
+	    - Categories are not invidividually linked on entries, 
+              either remove the hyperlink to the ViewCat.asp page
+              or use my split array to separate them (Down to personal choice)
+*****************************

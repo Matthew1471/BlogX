@@ -1,0 +1,23 @@
+This folder provides a list of user submitted hacks or ideas that are not officially supported 
+(for example these pages might rely on OLD buggy code)
+
+Hacks :
+
+Ron's Changes
+-------------
+* Drop down categories ALSO on the "Edit Entry" Page, 
+* Default Category for posts (via a querystring)
+* Ability to Edit Date of entries on "Edit Entry" Page
+  (Idea & Programmed by Ron Hoebe)
+
+Multiple Categories
+-------------
+* MultipleCategories (Idea by Karen Watterson, Programmed by Matthew1471)
+
+Inda's Easy Edit Links
+-------------
+* For the less technical, an easy form & javascript based "Edit Links" system
+
+Inda's MD5 Security
+-------------
+* Encrypt your password in the database using MD5 encryption

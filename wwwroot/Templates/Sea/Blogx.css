@@ -1,0 +1,345 @@
+BODY {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; FONT-SIZE: 9pt; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Trebuchet, Sans-Serif; background-image:url(Background.jpg); background-attachment: fixed; Color:White
+}
+P {
+	LINE-HEIGHT: 1.25em;
+	FONT-FAMILY: verdana, Sans-Serif;
+        color: white;
+}
+A {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none; COLOR: White;
+}
+A:visited {
+	TEXT-DECORATION: underline; COLOR: White;
+}
+A:hover {
+	TEXT-DECORATION: underline; COLOR: Red;
+}
+TABLE {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+INPUT {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+SELECT {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+TEXTAREA {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+INPUT {
+	VERTICAL-ALIGN: middle
+}
+SELECT {
+	VERTICAL-ALIGN: middle
+}
+TEXTAREA {
+	VERTICAL-ALIGN: middle
+}
+DIV#header {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #2B60DE; MARGIN-BOTTOM: 1em; PADDING-BOTTOM: 0.5em; COLOR: white; PADDING-TOP: 0.5em; POSITION: relative
+}
+DIV#header P#sideTitle {
+	RIGHT: 12px; POSITION: absolute; TOP: 2.5em; TEXT-ALIGN: right
+}
+.blogTitleSub {
+	DISPLAY: block
+}
+.blogTitleSubDisclaimer {
+	DISPLAY: block
+}
+H1#title {
+	MARGIN: 0px 12px
+}
+P#byline {
+	MARGIN: 0px 12px
+}
+P#byline {
+	FONT-STYLE: italic
+}
+DIV#content {
+	FLOAT: left; MARGIN: 0.5em 1.5em; WIDTH: 60%
+}
+DIV.date {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px; COLOR: white
+}
+DIV.date H2 {
+	FONT-SIZE: 1.6em; MARGIN: 0px 0px 1em 0em; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+DIV.entry {
+ BORDER-RIGHT: #ccc 1px solid; MARGIN-BOTTOM: 1em; BORDER-BOTTOM: #ccc 1px solid; background-color: #2B60DE;
+ white-space: -moz-pre-wrap;  /* Mozilla, supported since 1999 */
+ white-space: -pre-wrap;      /* Opera 4 - 6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ white-space: pre-wrap;       /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+ word-wrap: break-word;       /* IE 5.5+ */
+}
+H3.entryTitle {
+	PADDING-RIGHT: 0.2em; MARGIN-TOP: 0px; PADDING-LEFT: 0.2em; FONT-SIZE: 1.2em; BACKGROUND: #00008B; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0.2em; COLOR: black; PADDING-TOP: 0.2em; FONT-FAMILY: Verdana, Sans-Serif; COLOR:White
+}
+.entryTitle A {
+	COLOR: white
+}
+.entryTitle A:Visited {
+	TEXT-DECORATION: underline; COLOR: White;
+}
+.entryTitle A:hover {
+	TEXT-DECORATION: underline; COLOR: Red;
+}
+DIV.entryBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; COLOR: #FFFFFF
+}
+DIV.entryBody P {
+	MARGIN-TOP: 0.2em
+}
+P.permalink {
+	FLOAT: right
+}
+P.entryFooter {
+	FONT-SIZE: 0.9em; MARGIN: 0.5em; TEXT-ALIGN: right
+}
+DIV.comment {
+ background-color: #2B60DE; BORDER-RIGHT: #ccc 1px solid; MARGIN-BOTTOM: 1em; BORDER-BOTTOM: #ccc 1px solid;
+ white-space: -moz-pre-wrap;  /* Mozilla, supported since 1999 */
+ white-space: -pre-wrap;      /* Opera 4 - 6 */
+ white-space: -o-pre-wrap;    /* Opera 7 */
+ white-space: pre-wrap;       /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+ word-wrap: break-word;       /* IE 5.5+ */
+}
+H3.commentTitle {
+	BACKGROUND: #00008B; PADDING-RIGHT: 0.2em; MARGIN-TOP: 0px; PADDING-LEFT: 0.2em; FONT-SIZE: 1em; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0.2em; COLOR: white; PADDING-TOP: 0.2em; FONT-FAMILY: Verdana, Sans-Serif
+}
+DIV.commentBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em
+}
+DIV.commentBody P {
+	MARGIN-TOP: 0.2em
+}
+P.commentFooter {
+	FONT-SIZE: 0.9em; MARGIN: 0.5em; TEXT-ALIGN: right
+}
+DIV.commentBody FORM P {
+	MARGIN: 0em; LINE-HEIGHT: 1em
+}
+DIV.commentBody FORM TEXTAREA {
+	WIDTH: 75%; HEIGHT: 7em
+}
+SPAN.permalink {
+	COLOR: #00008B
+}
+SPAN.categories {
+	COLOR: #00008B
+}
+SPAN.comments {
+	COLOR: #00008B
+}
+SPAN.permalink A {
+	COLOR: #00008B
+}
+SPAN.categories A {
+	COLOR: #00008B
+}
+SPAN.comments A {
+	COLOR: #00008B
+}
+P.categories {
+	PADDING-RIGHT: 1em; FLOAT: right
+}
+P.comments {
+	
+}
+DIV.sidebar {
+	FONT-SIZE: smaller; FLOAT: left; WIDTH: 30%;
+}
+DIV.sidebar UL {
+	MARGIN: 0.5em; LIST-STYLE-TYPE: none
+}
+DIV.section {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN: 0.5em 2em 2em; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid; background-color: #2B60DE; COLOR: white
+}
+TABLE.navCalendar {
+	BORDER-RIGHT: #00008B 1px solid; BORDER-TOP: #00008B 1px solid; MARGIN: 0.5em 2em 2em; BORDER-LEFT: #00008B 1px solid; BORDER-BOTTOM: #00008B 1px solid; background-color: #2B60DE; COLOR: Black
+}
+DIV.section H3 {
+	PADDING-RIGHT: 0.2em; PADDING-LEFT: 0.2em; FONT-SIZE: 1.2em; BACKGROUND: #00008B; PADDING-BOTTOM: 0.2em; MARGIN: 0px; TEXT-TRANSFORM: uppercase; PADDING-TOP: 0.2em; 
+}
+DIV.sectionBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em; COLOR: Black;
+	overflow: auto;
+}
+DIV.section ul {
+  margin-left: 0;
+  padding-left: 1em;
+}
+
+DIV.section li {
+  margin: 0;
+  padding: 0;
+}
+TABLE.blogCal A {
+	COLOR: #666
+}
+TABLE.navCalendar TABLE TD {
+	FONT-SIZE: 8pt
+}
+.navTodayStyle {
+	BACKGROUND-color: #666666
+}
+.navSelectorStyle {
+	BACKGROUND-color: #666666
+}
+.navDayStyle {
+	
+}
+.navNextPrevStyle {
+	VERTICAL-ALIGN: baseline
+}
+.navDayHeader {
+	FONT-WEIGHT: bold
+}
+.navSelectedDayStyle {
+	FONT-WEIGHT: bold
+}
+.navTitleStyle {
+	FONT-WEIGHT: bold
+}
+.navWeekendDayStyle {
+	
+}
+.navOtherMonthDayStyle {
+	BACKGROUND: #f3f3f3
+}
+.navCalendar {
+	BORDER-LEFT-COLOR: #00008B; BORDER-BOTTOM-COLOR: #00008B; BORDER-TOP-COLOR: #00008B; BORDER-RIGHT-COLOR: #00008B
+}
+DIV.section FORM {
+	MARGIN: 0.5em
+}
+DIV#login P {
+	MARGIN: 0.2em 0px
+}
+DIV#footer {
+	CLEAR: both; PADDING-RIGHT: 2em; PADDING-LEFT: 2em; FONT-SIZE: smaller; PADDING-BOTTOM: 0.5em; MARGIN: 0.5em 2em; PADDING-TOP: 0.5em; COLOR: White
+}
+DIV#footer P {
+	MARGIN: 0.2em 0px
+}
+A.standardsButton {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.standardsButton:hover {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.standardsButton:visited {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+
+/*-- Fake IE Information Bar --*/
+
+body {
+	/* overflow: hidden; */
+	margin: 0 !important;
+	padding: 0 !important; /* required for Opera to have 0 margin */
+}
+
+#infobar {
+    font-size: .9em;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: normal;
+
+    /* CSS 2, so theoretically it will be ignored in non compliant browsers */
+    font: message-box;
+}
+
+#infobar a, #infobar a:link, #infobar a:visited, #infobar a:active {
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+    color: InfoText;
+    background: InfoBackground url(/Images/warning.gif) no-repeat fixed .3em .3em;
+    padding: .45em .3em .45em 2em;
+    border-bottom: .16em outset;
+    text-decoration: none;
+    cursor: default;
+    font-weight: normal;
+}
+
+#infobar a:hover {
+    color: HighlightText;
+    background: Highlight url(/Images/warning2.gif) no-repeat fixed .3em .3em;
+}
+
+/* A fake viewplot for IE information bar */
+#viewplot {
+    width: 100%;
+    padding: 1em;   /* Please set this to the value as that of your <body> */
+}
+
+/* -- Photo CSS --*/
+
+.photo_left {
+  clear: left; 
+  float: left;
+  padding: 2px 10px 5px 0px; 
+  width: 180px; }
+
+.photo_img {
+  margin: 0px;
+  padding: 0px; }
+
+.clear_left {
+  clear: right; }
+
+/* image shadow */
+.dropshadow {
+  clear: both;
+  float:left;
+  background: url(/Images/shadowAlpha.png) no-repeat bottom right !important;
+  background: url(/Images/shadow.gif) no-repeat bottom right;
+  margin: 10px 13px 0 6px !important;
+  margin: 20px 7px 0 3px;
+
+}
+
+.dropshadow img
+{
+	display: inline;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
+/* image shadow */
+.dropshadowr {
+  clear: both;
+  float:right;
+  background: url(/Images/shadowAlpha.png) no-repeat bottom right !important;
+  background: url(/Images/shadow.gif) no-repeat bottom right;
+  margin: 20px 6px 0 30px !important;
+  margin: 30px 3px 0 20px;
+
+
+}
+
+.dropshadowr  img
+{
+	display: block;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
+.adHeadline {font: bold 10pt Arial; text-decoration: underline; color: blue;}
+.adText {font: normal 10pt Arial; text-decoration: none; color: black;}
+
+#AdvancedTools{ 
+display : inline;
+}
+#AdvancedButton{ 
+display : none;
+}
