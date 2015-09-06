@@ -1,0 +1,201 @@
+BODY {
+	BORDER-RIGHT: 0px; PADDING-RIGHT: 0px; BORDER-TOP: 0px; PADDING-LEFT: 0px; FONT-SIZE: 9pt; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: 0px; PADDING-TOP: 0px; BORDER-BOTTOM: 0px; FONT-FAMILY: Trebuchet, Sans-Serif;
+}
+P {
+	LINE-HEIGHT: 1.25em
+}
+A {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+.entryTitle A {
+	COLOR: black
+}
+TABLE {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+INPUT {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+SELECT {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+TEXTAREA {
+	FONT-SIZE: 1em; FONT-FAMILY: Trebuchet, Sans-Serif
+}
+INPUT {
+	VERTICAL-ALIGN: middle
+}
+SELECT {
+	VERTICAL-ALIGN: middle
+}
+TEXTAREA {
+	VERTICAL-ALIGN: middle
+}
+DIV#header {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: #9999ff; MARGIN-BOTTOM: 1em; PADDING-BOTTOM: 0.5em; COLOR: black; PADDING-TOP: 0.5em; POSITION: relative
+}
+DIV#header P#sideTitle {
+	RIGHT: 12px; POSITION: absolute; TOP: 2.5em; TEXT-ALIGN: right
+}
+.blogTitleSub {
+	DISPLAY: block
+}
+.blogTitleSubDisclaimer {
+	DISPLAY: block
+}
+H1#title {
+	MARGIN: 0px 12px
+}
+P#byline {
+	MARGIN: 0px 12px
+}
+P#byline {
+	FONT-STYLE: italic
+}
+DIV#content {
+	FLOAT: left; MARGIN: 0.5em 1.5em; WIDTH: 60%
+}
+DIV.date {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; MARGIN-BOTTOM: 1em; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+DIV.date H2 {
+	FONT-SIZE: 1.6em; MARGIN: 0px 0px 1em 0em; FONT-STYLE: italic; TEXT-ALIGN: left
+}
+DIV.entry {
+	BORDER-RIGHT: #ccc 1px solid; MARGIN-BOTTOM: 1em; BORDER-BOTTOM: #ccc 1px solid
+}
+H3.entryTitle {
+	PADDING-RIGHT: 0.2em; MARGIN-TOP: 0px; PADDING-LEFT: 0.2em; FONT-SIZE: 1.2em; BACKGROUND: #ccccff; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0.2em; COLOR: black; PADDING-TOP: 0.2em; FONT-FAMILY: Verdana, Sans-Serif
+}
+DIV.entryBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em
+}
+DIV.entryBody P {
+	MARGIN-TOP: 0.2em
+}
+P.permalink {
+	FLOAT: right
+}
+P.entryFooter {
+	FONT-SIZE: 0.9em; MARGIN: 0.5em; TEXT-ALIGN: right
+}
+DIV.comment {
+	BORDER-RIGHT: #ccc 1px solid; MARGIN-BOTTOM: 1em; BORDER-BOTTOM: #ccc 1px solid
+}
+H3.commentTitle {
+	background: #ccccff; PADDING-RIGHT: 0.2em; MARGIN-TOP: 0px; PADDING-LEFT: 0.2em; FONT-SIZE: 1em; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 0.2em; COLOR: black; PADDING-TOP: 0.2em; FONT-FAMILY: Verdana, Sans-Serif
+}
+DIV.commentBody {
+	PADDING-RIGHT: 0.5em; PADDING-LEFT: 0.5em; PADDING-BOTTOM: 0.5em; PADDING-TOP: 0.5em
+}
+DIV.commentBody P {
+	MARGIN-TOP: 0.2em
+}
+P.commentFooter {
+	FONT-SIZE: 0.9em; MARGIN: 0.5em; TEXT-ALIGN: right
+}
+DIV.commentBody FORM P {
+	MARGIN: 0em; LINE-HEIGHT: 1em
+}
+DIV.commentBody FORM TEXTAREA {
+	WIDTH: 75%; HEIGHT: 7em
+}
+SPAN.permalink {
+	COLOR: #999
+}
+SPAN.categories {
+	COLOR: #999
+}
+SPAN.comments {
+	COLOR: #999
+}
+SPAN.permalink A {
+	COLOR: #999
+}
+SPAN.categories A {
+	COLOR: #999
+}
+SPAN.comments A {
+	COLOR: #999
+}
+P.categories {
+	PADDING-RIGHT: 1em; FLOAT: right
+}
+P.comments {
+	
+}
+DIV.sidebar {
+	FONT-SIZE: smaller; FLOAT: left
+}
+DIV.sidebar UL {
+	MARGIN: 0.5em; LIST-STYLE-TYPE: none
+}
+DIV.section {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN: 0.5em 2em 2em; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+TABLE.navCalendar {
+	BORDER-RIGHT: #ccc 1px solid; BORDER-TOP: #ccc 1px solid; MARGIN: 0.5em 2em 2em; BORDER-LEFT: #ccc 1px solid; BORDER-BOTTOM: #ccc 1px solid
+}
+DIV.section H3 {
+	PADDING-RIGHT: 0.2em; PADDING-LEFT: 0.2em; FONT-SIZE: 1.2em; BACKGROUND: #eee; PADDING-BOTTOM: 0.2em; MARGIN: 0px; TEXT-TRANSFORM: uppercase; PADDING-TOP: 0.2em
+}
+TABLE.blogCal A {
+	COLOR: #666
+}
+TABLE.navCalendar TABLE TD {
+	FONT-SIZE: 8pt
+}
+.navTodayStyle {
+	BACKGROUND: #eee
+}
+.navSelectorStyle {
+	BACKGROUND: #eee
+}
+.navDayStyle {
+	
+}
+.navNextPrevStyle {
+	VERTICAL-ALIGN: baseline
+}
+.navDayHeader {
+	FONT-WEIGHT: bold
+}
+.navSelectedDayStyle {
+	FONT-WEIGHT: bold
+}
+.navTitleStyle {
+	FONT-WEIGHT: bold
+}
+.navWeekendDayStyle {
+	
+}
+.navOtherMonthDayStyle {
+	BACKGROUND: #f3f3f3
+}
+.navCalendar {
+	BORDER-LEFT-COLOR: #eee; BORDER-BOTTOM-COLOR: #eee; BORDER-TOP-COLOR: #eee; BORDER-RIGHT-COLOR: #eee
+}
+DIV.section FORM {
+	MARGIN: 0.5em
+}
+DIV#login P {
+	MARGIN: 0.2em 0px
+}
+DIV#footer {
+	CLEAR: both; PADDING-RIGHT: 2em; PADDING-LEFT: 2em; FONT-SIZE: smaller; PADDING-BOTTOM: 0.5em; MARGIN: 0.5em 2em; PADDING-TOP: 0.5em
+}
+DIV#footer P {
+	MARGIN: 0.2em 0px
+}
+A.standardsButton {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.standardsButton:hover {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}
+A.standardsButton:visited {
+	BORDER-RIGHT: #7d3302 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #ffc8a4 1px solid; PADDING-LEFT: 3px; PADDING-BOTTOM: 0px; MARGIN: 0px; FONT: bold 10px verdana,sans-serif; BORDER-LEFT: #ff9a57 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #3f1a01 1px solid; BACKGROUND-COLOR: #ff6600; TEXT-DECORATION: none
+}

@@ -1,0 +1,3 @@
+The dictionaries may be placed in this folder, they are not placed in the BlogX Proxy ZIP to stop you having to download the same files twice..
+
+You may get the dictionaries from the BLOGX folder

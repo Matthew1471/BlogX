@@ -1,0 +1,1 @@
+<%If (Session(CookieName) = False or IsNull(Session(CookieName)) = True) AND (Request.Cookies(CookieName) <> "True") then Response.Redirect"../Default.asp"%>

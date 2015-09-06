@@ -1,0 +1,611 @@
+"mdl"
+7
+"PalmBlogX","appl","1471",1086,420,0
+"Sub Project_Startup()
+    Global FD as Integer
+    Global Timeout as Integer
+    Global Port as Integer
+    Global Buffer as String
+    Global Message as String
+    Global Count as Integer
+    Global CRLF as String
+    Global CR as String
+    Global LF as String
+    Global Error as Integer
+    
+    Global Username as String
+    Global Password as String
+    Global Folder as String
+    Global Server as String
+    
+    Global Title as String
+    Global Content as String
+    
+    Global Result as Integer
+    
+    Global Response as String
+    
+    '-- Temporary Address --'
+    Global ProxyServer as String
+    
+    CRLF = Chr(13) + Chr(10)
+    LF   = Chr(10)
+    CR   = Chr(13)
+
+    '-- API Calls --'
+    Global Cur_Form as Variant ' Current Form
+    Global Fld_Ptr as Variant  ' Field Object
+    Global Fld_Index as Short  ' Field Index
+
+    
+    'If DateDiff(ToDate(~2005/05/14~),Today()) > 0 Then 
+    'MsgBox(~Debug Copy Expired~)
+    'Stop
+    'Else
+    'MsgBox (~Debug Copy Will Expire In ~ + Str(DateDiff(Today(), ToDate(~2005/05/14~))) + ~ days time~)
+    'End If
+
+    LoadLibrary ~TcpIpLib~,~tcp~
+    
+End Sub
+
+'-- Remove The Login Database For Whatever Reason --
+Sub Kill()
+    Dim LoginDb as Database
+    Result = DbOpen(LoginDB, ~PalmBlogX-Login~, 0)
+    Result = DbClose(LoginDB)
+    Result = DbErase(LoginDB)
+End Sub"
+1086
+1086
+"PalmBlogX"
+"1"
+"Sub Project_Termination()
+
+    '-- Save Any Temp Entry --
+    If (Title <> ~~) And (Content <> ~~) Then
+    Dim EntryDB as Database
+    Result = DbCreate(EntryDB, ~PalmBlogX-Entry~, 0, ~1471~)
+    Result = DbOpen(EntryDB, ~PalmBlogX-Entry~, 0)
+    Result = DbDelete(EntryDB, ~0~) 
+    Result = DbInsert(EntryDB, ~0~, Title, Content)
+    Result = DbClose(EntryDB)
+    
+    '-- Debugging --
+    'MsgBox(~Saved ~ + Title)
+    
+    End If
+    
+    '-- Lets Handle That Connection --
+    'TCP.TCPClose(FD)
+
+End Sub"
+"bmpfile"
+1
+"Bitmap1086"
+1086
+",,,\\Server\inetpub\wwwroot\BlogX\Download\Source\PalmBlogX\World.ico,\\Server\inetpub\wwwroot\BlogX\Download\Source\PalmBlogX\World.ico,,,,\\Server\inetpub\wwwroot\BlogX\Download\Source\PalmBlogX\World.ico,\\Server\inetpub\wwwroot\BlogX\Download\Source\PalmBlogX\World.ico"
+"mnu"
+2,"Main"
+1016
+3
+"menu"
+1
+"File","",1020
+3
+"menu"
+1
+"Check Password","","",1024
+"Sub Menu1024_click()
+
+    Port     = 28
+    Timeout  = 5000
+    Count    = 250
+    
+    Field_Status.Text = ~Connecting~
+            
+    FD = TCP.tcpOpen(ProxyServer, Port, Timeout)
+    If FD < 0 Then
+    
+        If FD = -4626 Then 
+        MsgBox ~Connection Time Out (Error:~ + Str(FD) + ~)~
+        Else
+        MsgBox ~Could Not Create Internet Connection (Error:~ + Str(FD) + ~)~
+        End If
+        
+        Field_Status.Text = ~Connection Failed~
+        
+        Exit Sub
+    End If
+    
+    Message = ~Username=~ + UserName + ~&Password=~ + Password + Crlf
+    Message = Message + ~Serial : ~ + ~ahJkFd~ + Crlf
+    Message = Message + ~Server : ~ + Server + Crlf
+    Message = Message + ~Folder : ~ + Folder + Crlf
+    Message = Message + ~PasswordCHECK~ + ~<Send POST>~
+    
+    TCP.tcpFlush(FD) ' Flush Old Data
+    Error = TCP.tcpWrite(FD,Message)
+    If Error < 0 Then
+        MsgBox ~Could Not Send Data (Error:~ + Str(Error) + ~)~
+    Else
+       'Read Data Lines Until Connection Closed Or Timeout
+        Field_Status.Text = ~Downloading~
+        Buffer            = TCP.tcpRead(FD, Count, LF, timeout)
+        Field_Status.Text = ~Closing...~
+        TCP.tcpClose(FD)
+
+        If Buffer = ~No Text Entered~ + LF Then
+        MsgBox ~Username & Password OK~
+        Field_Status.Text = ~~
+        ElseIf Buffer = ~Unregistered~ + LF Then
+        Field_Status.Text = Buffer
+        MsgBox(~Your Serial was not accepted ~ + LF + LF + ~See http://blogx.co.uk/Official/~)
+        ElseIf Len(Buffer) > 0 Then
+        Field_Status.Text = Buffer
+        Kill()
+        End If
+    End If
+     
+End Sub"
+"menu"
+1
+"Erase Config","","",1084
+"Sub Menu1084_click()
+
+If Alert(~Erase Config~, ~Are You Sure?~,2,~Yes~,~No~) = 0 Then
+Kill()
+End If
+
+End Sub"
+"menu"
+1
+"Exit","","",1025
+"Sub Menu1025_click()
+Stop
+End Sub"
+"menu"
+1
+"Entry","",1021
+6
+"menu"
+1
+"Clear","","",1026
+"Sub Menu1026_click()
+
+If Alert(~Erase Entry~, ~Are You Sure?~,2,~Yes~,~No~) = 0 Then
+Field_Title.Text    = ~~
+Field_Content.Text  = ~~
+Field_Status.Text = ~~
+End If
+
+End Sub"
+"menu"
+1
+"Cut","","",1083
+"Sub Menu1083_click()
+'FldCut
+SysTrapSub 308, 1, fld_ptr
+End Sub"
+"menu"
+1
+"Copy","","",1081
+"Sub Menu1081_click()
+'FldCopy
+SysTrapSub 307, 1, fld_ptr
+End Sub"
+"menu"
+1
+"Undo","","",1085
+"Sub Menu1085_click()
+'FldUndo
+SysTrapSub 351, 1, fld_ptr
+End Sub"
+"menu"
+1
+"Paste","","",1082
+"Sub Menu1082_click()
+'FldPaste
+SysTrapSub 316, 1, fld_ptr
+End Sub"
+"menu"
+1
+"Keyboard","","",1075
+"Sub Menu1075_click()
+SysTrapSub 738,1,0
+End Sub"
+"menu"
+1
+"Help","",1022
+2
+"menu"
+1
+"Check For Update","","",1027
+"Sub Menu1027_click()
+
+    Port     = 28
+    Timeout  = 5000
+    Count    = 250
+    
+    Field_Status.Text = ~Connecting~
+            
+    FD = TCP.tcpOpen(ProxyServer, Port, Timeout)
+    If FD < 0 Then
+    
+        If FD = -4626 Then 
+        MsgBox ~Connection Time Out (Error:~ + Str(FD) + ~)~
+        Else
+        MsgBox ~Could Not Create Internet Connection (Error:~ + Str(FD) + ~)~
+        End If
+        
+        Field_Status.Text = ~Connection Failed~        
+        
+        Exit Sub
+    End If
+    
+    Message = ~CurrentVersionCHECK~ + Crlf
+        
+    TCP.tcpFlush(FD) ' Flush Old Data
+    Error = TCP.tcpWrite(FD,Message)
+    If Error < 0 Then
+        MsgBox ~Could Not Send Data (Error:~ + Str(Error) + ~)~
+    Else 
+        'Read Data Lines Until Connection Closed Or Timeout
+        Field_Status.Text = ~Downloading~
+        Buffer = TCP.tcpRead(FD, Count, LF, timeout)
+        
+        Field_Status.Text = ~Closing...~
+        TCP.tcpClose(FD)
+        Field_Status.Text = ~~
+        
+        If Buffer = ~V~ + GetVersion(~PalmBlogX~) + LF Then
+        MsgBox ~No New Version Available~ 
+        ElseIf Len(Buffer) > 0 Then
+        MsgBox ~New Version ~ + Buffer + ~ Available~
+        End If
+        
+    End If
+
+End Sub"
+"menu"
+1
+"About","","",1028
+"Sub Menu1028_click()
+NextForm ~About~
+End Sub"
+"vew"
+3,1003,#TRUE#,#TRUE#,#TRUE#,0,0,0,160,160,0,#FALSE#,#TRUE#
+"PalmBlogX"
+"PalmBlogX"
+"Sub Form1003_Before()
+
+    '-- Try Openeing The Database File --
+    Dim EntryDB as Database
+    Result = DbOpen(EntryDB, ~PalmBlogX-Entry~, 0)
+    
+    '-- If It Opened Ok, Then Read In The Values & Close The Database --
+    If Result = 0 Then 
+    Result = DbRead(EntryDB, ~0~, Title, Content)
+    Result = DbClose(EntryDB)
+    If Field_Title.Text = ~~ Then Field_Title.Text = Title
+    If Field_Content.Text = ~~ Then Field_Content.Text = Content
+    End If
+    
+    'Field_Title.SetFocus
+    
+    '-- Debugging --
+    'MsgBox (~Loaded ~ + Title)
+    
+End Sub"
+0
+""
+"Sub Form1003_Event()
+  
+  '-- Ignore PenUp / Down Events --
+  If Not GetEventType() = nsbKeyOrButton Then Exit Sub
+
+  'FrmGetFocus
+  Cur_Form  = SysTrapFunc(371, 0)          '-- Find Out The Current Form --'
+  Fld_Index = SystrapFunc(376, 1, Cur_Form) '-- Find The Index Of The Field That Has The Focus    
+  
+  'FrmGetObjectPtr
+  If Fld_Index <> -1 Then Fld_Ptr = SysTrapFunc (387, 2, Cur_Form, Fld_Index) '-- Pointer To Field That Had The Focus
+
+  If (Asc(GetKey()) = 5) Or (Asc(GetKey()) = 6) Then
+     MenuDraw ~Main~
+     SetEventHandled
+  Else
+     Title   = Field_Title.Text
+     Content = Field_Content.Text  
+  EndIf
+  
+End Sub"
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Title",1004,4,20,11,23,#TRUE#,0,"Title :"
+""
+"fld"
+1
+#TRUE#,#TRUE#,#TRUE#,#FALSE#,#TRUE#,80,#FALSE#,#FALSE#,#FALSE#
+"obj"
+2
+"fld","Field_Title",1005,28,20,12,116,#TRUE#,0,""
+""
+"fld"
+1
+#TRUE#,#TRUE#,#FALSE#,#FALSE#,#TRUE#,20000,#FALSE#,#TRUE#,#FALSE#
+"obj"
+2
+"fld","Field_Content",1008,4,48,76,144,#TRUE#,0,""
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Text",1010,4,36,11,25,#TRUE#,0,"Text :"
+""
+"fld"
+1
+#FALSE#,#TRUE#,#TRUE#,#FALSE#,#TRUE#,80,#FALSE#,#FALSE#,#FALSE#
+"obj"
+2
+"fld","Field_Status",1013,52,128,12,76,#TRUE#,0,""
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Status",1015,8,128,11,31,#TRUE#,0,"Status :"
+""
+"but"
+1
+#TRUE#,#TRUE#,#FALSE#
+"obj"
+2
+"but","Button_Send",1034,60,144,12,36,#TRUE#,0,"Send"
+"Sub object1034()
+    
+    Port     = 28
+    Timeout  = 5000
+    Count    = 250
+
+    Field_Status.Text = ~Connecting~
+            
+    FD = TCP.tcpOpen(ProxyServer, Port, Timeout)
+    If FD < 0 Then
+        If FD = -4626 Then 
+        MsgBox ~Connection Time Out (Error:~ + Str(FD) + ~)~
+        Else
+        MsgBox ~Could Not Create Internet Connection (Error:~ + Str(FD) + ~)~
+        End If
+        
+        Field_Status.Text = ~Connection Failed~
+        
+        Exit Sub
+    End If
+    
+    Message = ~Username=~ + UserName + ~&Password=~ + Password + Crlf
+    Message = Message + ~Serial : ~ + ~ahJkFd~ + Crlf
+    Message = Message + ~Server : ~ + Server + Crlf
+    Message = Message + ~Folder : ~ + Folder + Crlf
+    Message = Message + ~Title : ~ + Field_Title.Text + Crlf
+    Message = Message + Field_Content.Text + ~<Send POST>~
+        
+    TCP.tcpFlush(FD) ' Flush Old Data
+    
+    Do Until Message = ~~
+        If Len(Message) > 50 Then
+        Error   = TCP.tcpWrite(FD,Left(Message,50))
+        Message = Right(Message,Len(Message)-50)
+        Else
+        Error   = TCP.tcpWrite(FD,Message)
+        Message = ~~
+        End If
+    Loop
+    
+    If Error < 0 Then
+        MsgBox ~Could Not Send Data (Error:~ + Str(Error) + ~)~
+    Else 
+        Field_Status.Text = ~Downloading~
+        
+        'Read Data Lines Until Connection Closed Or Timeout
+        Buffer = TCP.tcpRead(FD, Count, LF, Timeout)
+        
+        If Len(Buffer) > 0 Then Field_Status.Text = Buffer
+        
+    End If
+    
+    TCP.tcpClose(FD)
+
+    Field_Title.SetFocus
+
+End Sub"
+"shf"
+1
+"obj"
+2
+"shf","GraffitiShiftIndicator",1071,148,148,8,8,#TRUE#,0,""
+""
+"vew"
+3,1042,#FALSE#,#TRUE#,#TRUE#,0,0,0,160,160,0,#FALSE#,#TRUE#
+"About PalmBlogX"
+"About"
+""
+0
+""
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Heading",1043,8,28,11,138,#TRUE#,0,"Thanks for trying PalmBlogX V1.0"
+""
+"but"
+1
+#TRUE#,#TRUE#,#TRUE#
+"obj"
+2
+"but","Button_Close",1046,50,140,12,60,#TRUE#,0,"No Problem..."
+"Sub object1046()
+NextForm ~PalmBlogX~
+End Sub"
+"lbl"
+1
+"obj"
+2
+"lbl","Label_URL",1049,32,44,15,100,#TRUE#,7,"http://BlogX.co.uk/"
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Copyright",1050,40,64,11,79,#TRUE#,0,"Matthew1471 2005"
+""
+"vew"
+3,1052,#FALSE#,#TRUE#,#TRUE#,0,0,0,160,160,0,#TRUE#,#TRUE#
+"Login To Your WebBlog"
+"Logon"
+"Sub Form1052_Before()
+
+    '-- Debugging VB App Purposes --'
+    ProxyServer = ~blogx.co.uk~
+    'ProxyServer = ~192.168.0.5~
+
+    '-- Try Openeing The Database File --
+    Dim LoginDb as Database
+    Result = DbOpen(LoginDB, ~PalmBlogX-Login~, 0)
+    
+    '-- If It Opened Ok, Then Read In The Values & Close The Database --
+    If Result = 0 Then 
+    Result = DbRead(LoginDB, ~0~, Folder, Username, Password, Server)  
+    Result = DbClose(LoginDB)
+    End If
+
+If Server <> ~~ Then
+NextForm ~PalmBlogX~, Clear
+Else
+Button_OK.Show
+Button_Cancel.Show
+
+Label_BlogFolder.Show
+Field_BlogFolder.Show
+
+Label_Username.Show
+Field_Username.Show
+
+Field_Password.Show
+Label_Password.Show
+
+Label_Server.Show
+Field_Server.Show
+
+Label_SaveDetails.Show
+CheckBox_SaveDetails.Show
+End If
+
+End Sub"
+0
+""
+""
+"but"
+1
+#TRUE#,#TRUE#,#TRUE#
+"obj"
+2
+"but","Button_Ok",1053,40,140,12,36,#FALSE#,0,"OK"
+"Sub object1053()
+
+    If CheckBox_SaveDetails.Status = True Then
+    Dim LoginDb as Database
+    Result = DbCreate(LoginDb, ~PalmBlogX-Login~, 0, ~1471~)
+    Result = DbOpen(LoginDB, ~PalmBlogX-Login~, 0)
+    Result = DbDelete(LoginDB, ~0~) 
+    Result = DbInsert(LoginDB, ~0~, Field_BlogFolder.Text, Field_UserName.Text,Field_Password.Text, Field_Server.Text)
+    Result = DbClose(LoginDB)
+    End If
+    
+    Folder   = Field_BlogFolder.Text
+    UserName = Field_UserName.Text
+    Password = Field_Password.Text
+    Server   = Field_Server.Text
+    
+    NextForm ~PalmBlogX~, Clear
+
+End Sub"
+"but"
+1
+#TRUE#,#TRUE#,#TRUE#
+"obj"
+2
+"but","Button_Cancel",1054,88,140,12,36,#FALSE#,0,"Cancel"
+"Sub object1054()
+Stop
+End Sub"
+"lbl"
+1
+"obj"
+2
+"lbl","Label_BlogFolder",1055,8,20,11,54,#FALSE#,0,"Blog Folder    :"
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Username",1058,8,44,11,55,#FALSE#,1,"Username :"
+""
+"fld"
+1
+#TRUE#,#TRUE#,#TRUE#,#FALSE#,#TRUE#,80,#FALSE#,#FALSE#,#FALSE#
+"obj"
+2
+"fld","Field_BlogFolder",1059,64,20,12,92,#FALSE#,0,""
+""
+"fld"
+1
+#TRUE#,#TRUE#,#TRUE#,#FALSE#,#TRUE#,80,#FALSE#,#FALSE#,#FALSE#
+"obj"
+2
+"fld","Field_Username",1061,64,44,12,92,#FALSE#,0,""
+""
+"fld"
+1
+#TRUE#,#TRUE#,#TRUE#,#FALSE#,#TRUE#,80,#FALSE#,#FALSE#,#FALSE#
+"obj"
+2
+"fld","Field_Password",1063,64,56,12,92,#FALSE#,3,""
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Password",1065,8,56,11,54,#FALSE#,1,"Password :"
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_Server",1066,8,80,11,53,#FALSE#,1,"Server        :"
+""
+"fld"
+1
+#TRUE#,#TRUE#,#TRUE#,#FALSE#,#TRUE#,80,#FALSE#,#FALSE#,#FALSE#
+"obj"
+2
+"fld","Field_Server",1067,64,80,12,92,#FALSE#,0,""
+""
+"chk"
+1
+#TRUE#,0,#FALSE#
+"obj"
+2
+"chk","Checkbox_SaveDetails",1069,128,108,12,12,#FALSE#,0,""
+""
+"lbl"
+1
+"obj"
+2
+"lbl","Label_SaveDetails",1070,68,108,11,54,#FALSE#,0,"Save Details :"
+""
+"end"

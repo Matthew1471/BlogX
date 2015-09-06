@@ -1,0 +1,12 @@
+--------------------------------------
+BlogXProxy uses the following code snippets
+--------------------------------------
+
+-  XML-RPC for ASP (http://aspxmlrpc.sourceforge.net/)
+   Runs the XML-RPC engine for "Pingback"
+   ** Filters "." to allow new method names **
+
+-  ASP PoorMan's Spell Check (http://www.kirchmeier.org/code/pmsc/)
+   Runs the dictionary component
+   ** Handeled by the BlogX GUI, has a "User Dictionary"
+--------------------------------------
