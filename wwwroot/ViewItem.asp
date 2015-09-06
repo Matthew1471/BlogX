@@ -33,7 +33,9 @@ OPTION EXPLICIT
 
 Dim Requested
 Requested = Request.Querystring("Entry")
-If (IsNumeric(Requested) = False) OR (Len(Requested) = 0) OR (Instr(Requested,"-") > 0) Then Requested = 0
+Requested = Replace(Requested,"-","")
+Requested = Replace(Requested,",","")
+If (IsNumeric(Requested) = False) OR (Len(Requested) = 0) Then Requested = 0
 
 '-- The header looks this up for the page title --'
 PageTitleEntryRequest = Requested

@@ -84,7 +84,24 @@ If (Refer <> "") AND (Refer <> BadLink) Then
     Records("ErrorCount") = 1
    End If
 
-   Records.Update
+  '-- Keep trying for 3 seconds --'
+  Dim EndTime
+  EndTime = DateAdd("s", 3, Now())
+
+   On Error Resume Next
+    Do While (Now() < EndTime)
+     Err.Clear
+     Records.Update
+     If Err.Number = 0 Then Exit Do
+    Loop
+
+    Dim WasError  
+    If Err.Number <> 0 Then WasError = True 
+   On Error GoTo 0
+
+   '-- Force it again so we get our server error page if needs be --'
+   If WasError Then Records.Close
+
    Records.Close
  End If
 

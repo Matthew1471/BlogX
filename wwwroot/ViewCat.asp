@@ -164,7 +164,7 @@ Else
  NewTime = NewTime & Minute(TimePosted)
 End If
 
-If (DayPosted <> PreviousDay) AND (NoDate <> 1) Then
+If (DayPosted & MonthPosted <> PreviousDay) AND (NoDate <> 1) Then
 
  Dim EntryWeekDay
  EntryWeekDay = WeekdayName(Weekday(MonthName(MonthPosted) & " " & DayPosted & ", " & YearPosted))
@@ -236,7 +236,7 @@ If (EnableEmail = True) AND (LegacyMode <> True) Then Response.Write "<acronym t
 | <span class="categories">#<%=Replace(Category, "%20", " ")%></span></p></div>
 <!--- End Content -->
 <%
- PreviousDay = DayPosted
+ PreviousDay = DayPosted & MonthPosted
  Records.MoveNext
  If JustDoIt = True Then Response.Write "</div>"
 Loop

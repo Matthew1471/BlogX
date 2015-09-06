@@ -128,7 +128,7 @@ Records.Open "SELECT RecordID, Title, Text, Category, Password, Day, Month, Year
    'Sun, 12 Aug 2007 09:58:50 GMT
    Response.Write "<lastBuildDate>" & BuildDate & "</lastBuildDate>" & VbCrlf
  
-   '-- We do not want to set it twice.. only once, records are descending remember! --'
+   '-- We do not want to set it twice.. only once, records are descending remember? --'
    SetLastModifiedHeader = True
 
   End If

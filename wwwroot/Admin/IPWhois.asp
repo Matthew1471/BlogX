@@ -61,13 +61,13 @@ If Request.Querystring("Theme") <> "" Then Template = Request.Querystring("Theme
  <%
  If NOT Records.EOF Then 
 
+  Do Until Records.EOF
+
   Dim EntryID, Email, IP
   Set EntryID = Records("EntryID")
   Set Email = Records("Email")
   Set Name = Records("Name")
   Set IP = Records("IP")
-
-  Do Until Records.EOF
 
   Response.Write "<p>" & VbCrlf
 
@@ -82,9 +82,6 @@ If Request.Querystring("Theme") <> "" Then Template = Request.Querystring("Theme
     EntryRecords.Update
     EntryRecords.Close
    Set EntryRecords = Nothing
-
-   Name = Name
-   EntryID = EntryID
 
    Records.Delete
    Records.MoveNext

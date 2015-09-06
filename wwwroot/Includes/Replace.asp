@@ -27,7 +27,7 @@
 '** GNU General Public License for more details.
 '**********************************************************************
 
-Function HTML2Text(strInput)
+Function HTML2Text(ByVal strInput)
  strInput  = Replace(strInput,"&","&amp;")
  strInput  = Replace(strInput,"<","&lt;")
  strInput  = Replace(strInput,">","&gt;")

@@ -30,6 +30,8 @@ OPTION EXPLICIT
 %>
 <!-- #INCLUDE FILE="Includes/Config.asp" -->
 <%
+Response.AddHeader "BlogX-Version",Version
+
 '-- Check for ban --'
 Records.Open "SELECT BannedIP, LoginFailCount, LastLoginFail FROM BannedLoginIP WHERE BannedIP='" & Replace(Request.ServerVariables("REMOTE_ADDR"),"'","") & "'",Database, 0, 2
  If Records.EOF = False Then
@@ -38,6 +40,15 @@ Records.Open "SELECT BannedIP, LoginFailCount, LastLoginFail FROM BannedLoginIP 
 
 If BlackListed Then
  Response.Write "You have been banned for 15 minutes"
+ElseIf Request.Querystring("Mode") = "CategoryList" Then
+ Records.Close
+ Records.Open "SELECT DISTINCT Category FROM Data WHERE Category <> """"", Database
+
+ Do Until (Records.EOF)
+  Response.Write Records("Category")
+  Records.MoveNext
+  If (NOT Records.EOF) Then Response.Write ","
+ Loop
 
 ElseIf (Ucase(Request.Form("Username")) = Ucase(AdminUsername)) AND (Ucase(Request.Form("Password")) = UCase(AdminPassword)) Then
 

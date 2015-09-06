@@ -257,7 +257,6 @@ If (OtherLinks <> 0) AND (FSODisabled = False) Then
    Response.Write "<li><a href=""" & Records("LinkURL") & """>" & Records("LinkName") & "</a></li>"
    Records.MoveNext
   Loop
-  Records.Close
 
   Response.Write "</ul>" & VbCrlf
   Response.Write "</div>" & VbCrlf
@@ -265,6 +264,7 @@ If (OtherLinks <> 0) AND (FSODisabled = False) Then
 
  End If
 
+  Records.Close
 End If
 
 If Polls <> False Then
@@ -390,19 +390,17 @@ Dim Category, LastCat
 
 '--- Open Recordset ---'
 Records.CursorLocation = 3 ' adUseClient
-Records.Open "SELECT DISTINCT Category FROM Data ORDER BY Category",Database, 1, 3
+Records.Open "SELECT DISTINCT Category FROM Data WHERE Category <> """" ORDER BY Category",Database, 1, 3
 
  '--- Set Category ---'
  Set Category = Records("Category")
 
  '-- Write Them In ---'
  Do Until (Records.EOF or Records.BOF)
-  If (Category <> "") Then 
    Response.Write "<li><a href=""" & SiteURL & "ViewCat.asp?Cat=" & Replace(Category, " ", "%20") & """>" 
    Response.Write Replace(Category, "%20", " ") & "</a> (<a href=""" & SiteURL & "RSS/Cat/?Category=" & Replace(Category, " ", "%20")
    If (ReaderPassword <> "") AND (Session("Reader") = True) Then Response.Write "&Password=" & ReaderPassword
    Response.Write """>Rss</a>)</li>" & VbCrlf
-  End If
  Records.MoveNext
 Loop
 
@@ -431,7 +429,7 @@ If (LegacyMode <> True) Then %>
 <form method="post" action="<%=SiteURL%>Search.asp">
  <div>
   <input name="Mode" type="hidden" value="Normal"/>
-  <input name="Search" type="text" value="<%=Replace(Request("Search"),"""","&quot;")%>" size="30" maxlength="70"/>
+  <input name="Search" type="text" value="<%=HTML2Text(Request("Search"))%>" size="30" maxlength="70"/>
   <input type="submit" value="Search"/><br/>
  </div>
 </form>

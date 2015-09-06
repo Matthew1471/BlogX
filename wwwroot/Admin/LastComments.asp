@@ -116,7 +116,7 @@ Response.Flush
   <div class="comment">
    <h3 class="commentTitle">
   <%
-    Response.Write " <acronym title=""Users Using This IP""><a href=""#"" onclick=""javascript:PrintPopup('" & SiteURL & "IPWhois.asp?IP=" & IP & "');""><img alt=""Users Using This IP"" src=""" & SiteURL & "Images/Emoticons/Profile.gif"" style=""border: none""/></a></acronym> "
+    Response.Write " <acronym title=""Users Using This IP""><a href=""#"" onclick=""javascript:PrintPopup('" & SiteURL & "Admin/IPWhois.asp?IP=" & IP & "');""><img alt=""Users Using This IP"" src=""" & SiteURL & "Images/Emoticons/Profile.gif"" style=""border: none""/></a></acronym> "
     If ProxyAddress <> "" Then Response.Write "<acronym title=""List User's Proxy Information""><a href=""http://whois.domaintools.com/" & IP & """><img alt=""List User's Proxy Information"" src=""" & SiteURL & "/Images/Print.gif"" style=""border: none""/></a></acronym> "
     Response.Write "<acronym title=""Ban User""><a "
     If ProxyAddress <> "" Then Response.Write "onclick=""return confirm('Are you *sure* you want to ban this user?\n\nThis user was behind a proxy. Check the address is creditable before banning.');"" "

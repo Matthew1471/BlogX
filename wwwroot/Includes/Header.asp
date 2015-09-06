@@ -26,7 +26,7 @@
 '**********************************************************************
 %><!-- #INCLUDE FILE="Config.asp" -->
 <%
-'-- Enter here the date your header and footer was modified, some relatively static pages will use this date --'
+'-- Enter here the date your header and footer was modified, some relatively static pages will use this date. --'
 GeneralModifiedDate = CDate("14/08/08 17:17:00")
 
 '-- Did the user temporarily request legacy mode? --'
@@ -35,7 +35,7 @@ If Instr(Request.Querystring(),"LegacyMode") <> 0 Then LegacyMode = True
 '-- Has legacy mode been turned on by an admin or user? --'
 If LegacyMode = True Then
 
- '-- Set all the options to the default Chris Anderson BlogX; disabling any extras --'
+ '-- Set all the options to the default Chris Anderson BlogX; disabling any extras. --'
  ArgoSoftMailServer = 0
  BackgroundColor = "#FFFFFF"
  CalendarCheck = 1
@@ -51,54 +51,76 @@ If LegacyMode = True Then
 
 End If
 
-'-- This routine checks for disabled cookies --'
+'-- This routine checks for the user disabling cookies. --'
 If Len(Request.Form("Username")) = 0 AND Len(Request.Form("Password")) = 0 Then
  Session("CookieTest") = "AOK"
 ElseIf Session("CookieTest") <> "AOK" Then
  CookiesDisabled = True
 End If
 
+'-- If the user is an administrative user then it is likely the page will change frequently, so do not send a modification date. --'
 If Session(CookieName) = True Then DontSetModified = True
 
-'-- Security --'
+'## Security handling ##'
 
-'-- Check for ban --'
+ '-- Check for an IP address ban on this user. --'
  Records.Open "SELECT BannedIP, LoginFailCount, LastLoginFail FROM BannedLoginIP WHERE BannedIP='" & Replace(Request.ServerVariables("REMOTE_ADDR"),"'","") & "'",Database, 0, 2
-  If Records.EOF = False Then 
+
+  '-- Do we have a record for this user? --'
+  If Records.EOF = False Then
+
+   '-- This address is in our list of banned addresses, have they made 3 attempts in less than 15 minutes. --' 
    If DateDiff("n",Records("LastLoginFail"),Now()) < 15 AND (Records("LoginFailCount") MOD 3 = 0) Then 
     Blacklisted = True
+
+    '-- This page denying login is going to change in 15 minutes, so do not send a modification date/time. --'
     DontSetModified = True
+
    End If
+
   End If
 
  If BlackListed Then
-  '-- We do nothing --'
+  '-- We do nothing (apart from set a diagnostic HTML comment) --'
   Response.Write "<!-- Blacklisted due to " & DateDiff("n",Records("LastLoginFail"),Now()) & " minutes since ban and " & Records("LoginFailCount") & " (MOD 3 = " &  (Records("LoginFailCount") MOD 3) & ") attempts. -->" & VbCrlf
+
+ '-- Is the user authenticated (or should they now be authenticated?) --'
  ElseIf (Ucase(Request.Form("Username")) = Ucase(AdminUsername)) AND (Ucase(Request.Form("Password")) = UCase(AdminPassword)) OR (Request.Cookies(CookieName) = "True") Then
 
+  '-- Set our server side session cookie to indicate they are authenticated. --'
   Session(CookieName) = True
 
+  '-- Did the user click the checkbox stating we should set a cookie? --'
   If Request.Form("Remember") = "True" then
    Response.Cookies(CookieName) = "True"
-   Response.Cookies(CookieName).Expires = "July 31, 2012"
+   Response.Cookies(CookieName).Expires = "July 31, 2024"
   End If
 
+ '-- Did the user specify a username and password but by this point it is incorrect? --'
  ElseIf Len(Request.Form("Username")) <> 0 OR Len(Request.Form("Password")) <> 0 Then
 
+   '-- If this user (IP address) has not failed to login before then create a record for them. --'
    If Records.EOF Then 
     Records.AddNew
     Records("BannedIP") = Request.ServerVariables("REMOTE_ADDR")
    End If
 
+   '-- Set the last time they failed to login to the time now. --'
    Records("LastLoginFail") = Now()
+
+   '-- Increment the number of times they failed to login. --'
    Records("LoginFailCount") = Records("LoginFailCount") + 1
+
+   '-- Save this record --'
    Records.Update
 
+   '-- At this point have they made 3 consecutive attempts? --'
    If Records("LoginFailCount") MOD 3 = 0 Then BlackListed = True
 
  End If
 
-  Records.Close
+ '-- Close the recordset for the BannedLoginIP table --'
+ Records.Close
 
 '-- Non-SSL --'
 If Request.ServerVariables("HTTPS") = "on" AND CookiesDisabled <> True Then
@@ -107,64 +129,68 @@ If Request.ServerVariables("HTTPS") = "on" AND CookiesDisabled <> True Then
  Response.Redirect sURL
 End If
 
-'-- End of Security --'
+'## End of Security ##'
 %>
 <!-- #INCLUDE FILE="Languages.asp" -->
 <%
 '-- clients detect can Pingback URIs from headers.
-Response.AddHeader "X-Pingback",SiteURL & "RSS/PingBack/Default.asp"
+Response.AddHeader "X-Pingback", SiteURL & "RSS/PingBack/Default.asp"
 
-'-- Manage logging --'
+'## Referrer handling ##'
 If Logging = True Then
 
-'Dimension variables
-Dim RSSRefer, ReferURL
+ 'Dimension variables
+ Dim RSSRefer, ReferURL
 
-'-- Find Out Refer --'
-If Request.ServerVariables("HTTP_REFERER") <> "" AND InStr(1,Request.ServerVariables("HTTP_REFERER"),SiteUrl,1) = 0 Then
- ReferURL = Left(Replace(Request.ServerVariables("HTTP_REFERER"),"'", "&#39;"),255)
-Else
- ReferURL = "(None)"
-End If
+ '-- Locate the user supplied referrer. --'
+ If Len(Request.ServerVariables("HTTP_REFERER")) > 0 AND InStr(1,Request.ServerVariables("HTTP_REFERER"),SiteUrl,1) = 0 Then
+  ReferURL = Left(Replace(Request.ServerVariables("HTTP_REFERER"),"'", "&#39;"),255)
+ Else
+  ReferURL = "(None)"
+ End If
 
-'-- What If we are RSS? --'
-If RSSRefer <> "" Then ReferURL = RSSRefer
+ '-- Are we a client on the LAN? --'
+ If Instr(Request.ServerVariables("REMOTE_ADDR"),"192.168") > 0 Then ReferURL = "Local Address"
 
-If Instr(Request.ServerVariables("REMOTE_ADDR"),"192.168") > 0 Then ReferURL = "Local Address"
-If Instr(Left(Replace(Request.ServerVariables("HTTP_REFERER"),"'", "&#39;"),255),"cache:") > 0 Then ReferURL = "Cache"
+ '-- Did the user find our page via Google cache, so we are actually our own referrer? --'
+ If Instr(Request.ServerVariables("HTTP_REFERER"),"cache:") > 0 Then ReferURL = "Cache"
 
-'-- Open The Records Ready To Write --'
+ '-- Open the Refer records ready to write to them. --'
+ 'CursorType: can be one: adOpenForwardOnly (default), adOpenStatic, adOpenDynamic, adOpenKeyset
+ 'LockType: can be one of: adLockReadOnly (default), adLockOptimistic, adLockPessimistic, adLockBatchOptimistic
 
-'CursorType: can be one: adOpenForwardOnly (default), adOpenStatic, adOpenDynamic, adOpenKeyset
-'LockType: can be one of: adLockReadOnly (default), adLockOptimistic, adLockPessimistic, adLockBatchOptimistic
+  '-- Logging sometimes hits concurrency issues, so it is best to resume. --'
+  On Error Resume Next
 
-Records.LockType = 3
+  Records.Open "SELECT ReferHits, ReferURL FROM Refer WHERE ReferURL='" & ReferURL & "';", Database, , 3
 
-	On Error Resume Next
+  '-- Has this site already been seen before? --'
+  If Not Records.EOF = True Then
+   Records("ReferHits") = Int(Records("ReferHits")) + 1
+  Else
+   Records.AddNew
+   Records("ReferURL") = ReferURL
+   Records("ReferHits") = 1
+  End If
 
-	Records.Open "SELECT ReferHits, ReferURL FROM Refer WHERE ReferURL='" & ReferURL & "';", Database
+  Records.Update
 
-	If Not Records.EOF = True Then
-	Records("ReferHits") = Int(Records("ReferHits")) + 1
-	Else
-	Records.AddNew
-	Records("ReferURL") = ReferURL
-	Records("ReferHits") = 1
-	End If
+  '-- If for whatever reason the above command failed, cancel the update. --'
+  Records.CancelUpdate
 
-	Records.Update
+  Records.Close
+  On Error Goto 0
+ End If
 
-	Records.CancelUpdate
+'## End of referrer handling ##'
 
-	Records.Close
-	On Error Goto 0
-End If
+'## Calendar querystring handling ##'
 
-'-- Calendar Querystring SQL Exploit Management --'
 szYearMonth = Request("YearMonth")
 DataDay = Request("Day")
 
-If szYearMonth = "" Then
+'-- Did the user request a specific year and month? --'
+If Len(szYearMonth) = 0 Then
  SpecificRequest = False
  DataYear = Year(Now())
  DataMonth = Month(Now())
@@ -173,23 +199,24 @@ Else
  DataYear = Left(szYearMonth,4)
  DataMonth = Right(szYearMonth,2)
 
-  '-- Is Our User Trying To Make Up Months Of The Year? --'
+  '-- Is our user trying to make up months of the year? --'
   If IsNumeric(DataMonth) = True Then 
    If (DataMonth > 12) OR (DataMonth < 1) Then DataMonth = 1
   End If
 
 End If
 
+'-- Did the user specify any parameters that were not actually numeric (often for malicious gain)? --'
 If (IsNumeric(DataYear) <> True) OR (IsNumeric(DataMonth) <> True) OR (IsNumeric(DataDay) <> True) Then Response.Redirect("Hacker.asp")
 
-'-- Handle NEXT and LAST --'
+'-- Handle NEXT and LAST month.--'
 If Request("POS") = "NEXT" Then
  DataMonth = DataMonth + 1
 ElseIf Request("POS") = "LAST" Then 
  DataMonth = DataMonth - 1
 End If
 
-'-- Handle Spurious Months --'
+'-- Handle spurious months. --'
 If DataMonth = 0 Then
  DataMonth = 12
  DataYear = DataYear - 1
@@ -198,17 +225,18 @@ ElseIf DataMonth = 13 Then
  DataYear = DataYear + 1
 End If
 
-'-- End Of Calendar Querystring Management --'
+'## End of calendar querystring handling ##'
 
-'--Admin Logout --'
+'-- Admin logout. --'
 If Request.Querystring = "ClearCookie" Then 
  Session(CookieName) = False
  If Request.Cookies(CookieName) = "True" Then Response.Cookies(CookieName) = ""
 End If
 
-'-- Handle page title --'
+'-- Handle page title set request. --'
 If Len(PageTitleEntryRequest) > 0 AND IsNumeric(PageTitleEntryRequest) Then
  PageTitleEntryRequest = Replace(PageTitleEntryRequest,"-","")
+ PageTitleEntryRequest = Replace(PageTitleEntryRequest,",","")
  Records.Open "SELECT RecordID, Title FROM Data WHERE RecordID=" & PageTitleEntryRequest,Database, 0, 1
   If Records.EOF = False Then PageTitle = Records("Title") & PageTitle
  Records.Close
@@ -228,6 +256,10 @@ End If
  // Usage Of This Software Is Subject To The Terms Of The License
  //= - - - - - - -
  -->
+
+ <meta property="og:title" content="<%If Len(PageTitle) > 0 Then Response.Write SiteDescription & " - " & Replace(PageTitle,"""","&quot;") Else Response.Write SiteDescription%>"/>
+ <meta property="og:image" content="http://blogx.co.uk/Images/Articles/BlogX%28260606%29.gif"/>
+ <meta property="og:site_name" content="<%=SiteDescription%>"/>
 
  <script type="text/javascript">
  <!-- Hide javascript so W3C doesn't choke on it

@@ -144,7 +144,7 @@ Function CacheHandle(Posted)
     Response.Status = "304 Not Modified"
     Response.End()
    Else
-    Response.Write "<!-- No Proxy Match : DocDate-""" & Posted & """ / ProxyDate-""" & GivenDate & """ -->" & VbCrlf
+    'Response.Write "<!-- No Proxy Match : DocDate-""" & Posted & """ / ProxyDate-""" & GivenDate & """ -->" & VbCrlf
    End If
   End If
 End Function

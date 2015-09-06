@@ -86,7 +86,7 @@ Records.Close
 %>
 <form id="AddEntry" action="EditEntry.asp?Entry=<%=Requested%>" method="post" onsubmit="return setVar()">
  <p><input name="Action" type="hidden" value="Post"/>
- Title : <input name="Title" type="text" style="width:80%;" maxlength="80" value="<%=Replace(Replace(Title,"""","&quot;"),"&","&amp;")%>"/>  <a href="?Entry=<%=Requested%>&amp;Delete=True" title="DELETE this entry" onclick="return confirm('Warning! If You Continue Entry #<%=Requested%> Will Be DELETED.')"><img alt="DELETE This Entry" src="<%=SiteURL%>Images/Delete.gif" width="15" height="15" style="border-style:none"/></a></p>
+ Title : <input name="Title" type="text" style="width:80%;" maxlength="80" value="<%=Replace(Replace(Title,"&","&amp;"),"""","&quot;")%>"/>  <a href="?Entry=<%=Requested%>&amp;Delete=True" title="DELETE this entry" onclick="return confirm('Warning! If You Continue Entry #<%=Requested%> Will Be DELETED.')"><img alt="DELETE This Entry" src="<%=SiteURL%>Images/Delete.gif" width="15" height="15" style="border-style:none"/></a></p>
 
  <p>Content :<br/></p>
 
@@ -251,7 +251,7 @@ Records.Close
   Records.Open "SELECT RecordID, Title, Text, Category, Password, Day, Month, Year, Time, StopComments, Enclosure, LastModified FROM Data ORDER By RecordID DESC", Database, 0, 2
  End If
 
-  Records("Title") = Request.Form("Title")
+  Records("Title") = Left(Request.Form("Title"),80)
   Records("Text") = Request.Form("Content")
   Records("Password") = Request.Form("Password")
   Records("Category") = EntryCat

@@ -118,7 +118,7 @@ If nRecCount > 0 Then Records.AbsolutePage = nPage
 
 '--- Setup Day Posted ---'
 PreviousDay = "0"
-				
+
 ' Loop through records until it's a next page or End of Records
 Dim RecordID, Title, Text, Password, DayPosted, MonthPosted, YearPosted, TimePosted, EntryUTCTimeZoneOffset, CommentsCount, Enclosure
 Dim LastModified, NewTime, JustDoIt
@@ -185,7 +185,7 @@ Else
 
 End If
 
-If (DayPosted <> PreviousDay) AND (NoDate <> 1) Then
+If (DayPosted & MonthPosted <> PreviousDay) AND (NoDate <> 1) Then
 
  Dim EntryWeekDay
  EntryWeekDay = WeekdayName(Weekday(MonthName(MonthPosted) & " " & DayPosted & ", " & YearPosted))
@@ -258,7 +258,7 @@ If (EnableEmail = True) AND (LegacyMode <> True) Then Response.Write "<acronym t
 <% If (ShowCategories <> False) AND (Category <> "") AND (IsNull(Category) = False) Then Response.Write " | <span class=""categories"">#<a href=""ViewCat.asp?Cat=" & Replace(Category, " ", "%20") & """>" & Replace(Category, "%20", " ") & "</a></span>"%></p></div>
 <!-- End Content -->
 <%
- PreviousDay = DayPosted
+ PreviousDay = DayPosted & MonthPosted
  Records.MoveNext
  If JustDoIt = True Then Response.Write "</div>"
 Loop

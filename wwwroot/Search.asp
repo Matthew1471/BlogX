@@ -36,14 +36,14 @@ Requested = Request("Search")
 '-- Filter & Clean ### --'
 Requested = Replace(Requested,"'","''")
 
-'-- If anyone has a quick fix for these, E-mail me, I'm bored of playing with it ---'
+'-- If anyone has a quick fix for these, e-mail me, I'm bored of playing with it ---'
 Requested = Replace(Requested,"%","")
 Requested = Replace(Requested,"_","")
 Requested = Replace(Requested,"[","")
 Requested = Replace(Requested,"]","")
 
 If Len(Requested) > 0 Then
- PageTitle = "Searched for &quot;" & Requested & "&quot;"
+ PageTitle = "Searched for &quot;" & HTML2Text(Requested) & "&quot;"
 Else
  PageTitle = "Search"
 End If
@@ -208,10 +208,10 @@ If Len(Requested) <> 0 Then
 
   If Len(Password) > 0 Then
    Text = "<form action=""ProtectedEntry.asp"" method=""GET""><center>" & VbCrlf
-   Text = Text & "<input type=""hidden"" name=""Entry"" value=""" & RecordID & """>" & VbCrlf 
+   Text = Text & "<input type=""hidden"" name=""Entry"" value=""" & RecordID & """/>" & VbCrlf 
    Text = Text & "<img src=""Images/Key.gif""> Password Protected Entry <br/>" & VbCrlf
    Text = Text & "This post is password protected. To view it please enter your password below:"
-   Text = Text & "<br/><br/>Password: <input name=""Password"" type=""text"" size=""20""> <input type=""submit"" name=""Submit"" value=""Submit"">" & VbCrlf
+   Text = Text & "<br/><br/>Password: <input name=""Password"" type=""text"" size=""20""/> <input type=""submit"" name=""Submit"" value=""Submit""/>" & VbCrlf
    Text = Text & "</center></form>"
   End If
 
@@ -304,7 +304,7 @@ If (NOT SetLastModifiedHeader) AND (NOT DontSetModified) AND (Session(CookieName
 
 End If
 
-  If (DayPosted <> PreviousDay) AND (NoDate <> 1) Then
+  If (DayPosted & MonthPosted <> PreviousDay) AND (NoDate <> 1) Then
    Response.Write vbcrlf & "<!-- Start Date Header -->" & vbcrlf
    Response.Write "<div class=""date"" id=""Records" & YearPosted & "-" & MonthPosted & "-" & DayPosted & """>" & vbcrlf
    Response.Write "<h2 class=""dateHeader"">" & Left(MonthName(MonthPosted),3) & " " & DayPosted & ", " & YearPosted & " (Only containing "
@@ -353,7 +353,7 @@ End If
   </p></div>
   <!-- End Content -->
   <%
-  PreviousDay = DayPosted
+  PreviousDay = DayPosted & MonthPosted
   Records.MoveNext
   If JustDoIt = True Then Response.Write "</div>"
  Loop
@@ -370,7 +370,7 @@ If nRecCount < 1 Then
 %>
 <!-- Start No|Invalid Text / Default page load / EOF content -->
 <div class="entry">
-<h3 class="entryTitle"><% If Request("Search") = "" Then Response.Write "No Text entered" Else Response.Write "No Entries Found With That Criteria"%></h3><br/>
+<h3 class="entryTitle"><% If Request("Search") = "" Then Response.Write "No Text Entered" Else Response.Write "No Entries Found With That Criteria"%></h3><br/>
 <div class="entryBody">
 
 <% If (Request("Search") <> "") AND (Requested = "") Then %>
@@ -378,15 +378,15 @@ If nRecCount < 1 Then
 <% ElseIf (Requested = "") AND (Request("Search") = "") Then %>
  <p align="center">Welcome, Please enter your query below<br/>
 <% ElseIf (nRecCount < 1) AND (Requested <> "") Then %>
- <p align="center">No Entries found with the criteria "<b><%=HTML2Text(Requested)%></b>" in either the text's sentences <b>OR</b> <% If Request("Mode") <> "Any" Then Response.Write "the title" ELSE Response.Write "in any order in the text"%>.<br/></p>
+ <p align="center">No entries found with the criteria "<b><%=HTML2Text(Requested)%></b>" in either the text's sentences <b>OR</b> <% If Request("Mode") <> "Any" Then Response.Write "the title" ELSE Response.Write "in any order in the text"%>.<br/></p>
 <% End If
-If Request("Search") <> "" Then Response.Write "<P align=""center"">Please try again with a different criteria:" 
+If Request("Search") <> "" Then Response.Write "<p align=""center"">Please try again with a different criteria:" 
 %>
 
- <form name="Search" method="post" action="Search.asp" style="text-align: center">
-  <input Name="Search" type="text" value="<%=Replace(Requested,"""","&quot;")%>" size="13" maxlength="70"><input type="submit" value="Search"><br/>
-  <br/>Words Can Be In Any Order In The Text (so long as they <b>ALL</b> appear) : <input name="Mode" type="Checkbox" Value="Any" <%If Request("Mode") = "Any" Then Response.Write "CHECKED"%>>
-  <br/>Don't Complete words ("Holl" wont return "Holly") : <input name="NoAutoComplete" type="Checkbox" value="True" <%If Request("NoAutoComplete") = "True" Then Response.Write "CHECKED"%>>
+ <form method="post" action="Search.asp" style="text-align: center">
+  <input name="Search" type="text" value="<%=Replace(Requested,"""","&quot;")%>" size="13" maxlength="70"/><input type="submit" value="Search"/><br/>
+  <br/>Words can be in any order in the text (so long as they <b>ALL</b> appear) : <input name="Mode" type="checkbox" value="Any" <%If Request("Mode") = "Any" Then Response.Write "CHECKED"%>/>
+  <br/>Don't complete words ("Holl" will not return "Holly") : <input name="NoAutoComplete" type="checkbox" value="True" <%If Request("NoAutoComplete") = "True" Then Response.Write "CHECKED"%>/>
  </form>
 
  </p>

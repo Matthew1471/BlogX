@@ -32,9 +32,13 @@ OPTION EXPLICIT
 '**********************************************************************
 
 '-- Proxy Handler --'
-CacheHandle(CDate("04/12/08 20:18:00"))
+CacheHandle(CDate("11/04/12 23:28:00"))
 
 PageTitle = "About BlogX"
+
+Dim ShowOriginal, ShowNew, ShowChanges
+If Request.Querystring("ShowOriginal") = "Y" Then ShowOriginal = "Y" Else ShowOriginal = "N"
+If Request.Querystring("ShowNew") = "N" Then ShowNew = "N" Else ShowNew = "Y"
 %>
 <!-- #INCLUDE FILE="Includes/Header.asp" -->
 <!-- #INCLUDE FILE="Includes/Cache.asp" -->
@@ -52,19 +56,19 @@ PageTitle = "About BlogX"
  <!--- End General Information -->
 
  <!--- Start Original BlogX Information -->
- <% If Request.Querystring("ShowOriginal") = "Y" Then Response.Write "<div class=""entry"">"%>
-  <h3 class="entryTitle"><% If Request.Querystring("ShowOriginal") = "Y" Then%><acronym title="Hide The Original Information"><a href="?ShowOriginal=N&amp;ShowNew=<%=Request.Querystring("ShowNew")%>&amp;ShowChanges=<%=Request.Querystring("ShowChanges")%>"><img alt="Show Less" src="Images/Less.Gif" style="border-style: none"/></a></acronym><% Else %><acronym title="Show The Original Information"><a href="?ShowOriginal=Y&amp;ShowNew=<%=Request.Querystring("ShowNew")%>&amp;ShowChanges=<%=Request.Querystring("ShowChanges")%>"><img alt="Show More" src="Images/More.Gif" style="border-style: none"/></a></acronym><% End If%> What Was The Original WebBlogX/BlogX</h3><br/>
+ <% If ShowOriginal = "Y" Then Response.Write "<div class=""entry"">"%>
+  <h3 class="entryTitle"><% If ShowOriginal = "Y" Then%><acronym title="Hide The Original Information"><a href="?ShowOriginal=N&amp;ShowNew=<%=ShowNew%>"><img alt="Show Less" src="Images/Less.Gif" style="border-style: none"/></a></acronym><% Else %><acronym title="Show The Original Information"><a href="?ShowOriginal=Y&amp;ShowNew=<%=ShowNew%>"><img alt="Show More" src="Images/More.Gif" style="border-style: none"/></a></acronym><% End If%> What Was The Original WebBlogX/BlogX</h3><br/>
 
-  <% If Request.Querystring("ShowOriginal") = "Y" Then %><div class="entryBody">
+  <% If ShowOriginal = "Y" Then %><div class="entryBody">
    BlogX is a ASP C# .Net Blogging program, which was originally written for websites by "Chris Anderson" (<a href="http://SimpleGeek.com">http://SimpleGeek.com</a>)
   </div>
  </div><% End If %>
  <!--- End Original BlogX Information -->
 
  <!--- Start Matthew1471 BlogX Information -->
-<% If Request.Querystring("ShowNew") <> "N" Then Response.Write "<div class=""entry"">"%>
-<h3 class="entryTitle"><% If Request.Querystring("ShowNew") <> "N" Then%><acronym title="Hide The New Information"><a href="?ShowOriginal=<%=Request.Querystring("ShowOriginal")%>&amp;ShowNew=N&amp;ShowChanges=<%=Request.Querystring("ShowChanges")%>"><img alt="Show Less" src="Images/Less.Gif" style="border-style: none"/></a></acronym><% Else %><acronym title="Show The New Information"><a href="?ShowOriginal=<%=Request.Querystring("ShowOriginal")%>&amp;ShowNew=Y&amp;ShowChanges=<%=Request.Querystring("ShowChanges")%>"><img alt="Show More" src="Images/More.Gif" style="border-style: none"/></a></acronym><% End If%> What Is Matthew1471's BlogX</h3><br/>
-<% If Request.Querystring("ShowNew") <> "N" Then %>
+<% If ShowNew = "Y" Then Response.Write "<div class=""entry"">"%>
+<h3 class="entryTitle"><% If ShowNew = "Y" Then%><acronym title="Hide The New Information"><a href="?ShowOriginal=<%=ShowOriginal%>&amp;ShowNew=N"><img alt="Show Less" src="Images/Less.Gif" style="border-style: none"/></a></acronym><% Else %><acronym title="Show The New Information"><a href="?ShowOriginal=<%=ShowOriginal%>&amp;ShowNew=Y"><img alt="Show More" src="Images/More.Gif" style="border-style: none"/></a></acronym><% End If%> What Is Matthew1471's BlogX</h3><br/>
+<% If ShowNew = "Y" Then %>
 <div class="entryBody">
 <p>Matthew1471's Edition of BlogX runs "Classic ASP" (Wider supported and simpler) and is programmed in Visual Basic.</p>
 

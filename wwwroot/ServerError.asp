@@ -56,7 +56,7 @@ TimeOffset = 0            'Change the time by this many hours e.g. "6" adds 6 ho
 '***********************************************'
 
 	'Read in the configuration details from the recordset
-	Copyright       = "Content © 2008 Matthew Roberts"
+	Copyright       = "Content © 2010 Matthew Roberts"
 	
 	' This is used in reporting the error and must be valid
 	EmailAddress 	= "webmaster@yoursite.co.uk"
@@ -527,7 +527,7 @@ MailBody = MailBody & "</P>" & VbCrlf
 MailBody = MailBody & "</DIV>" & VbCrlf
 MailBody = MailBody & "</DIV>" & VbCrlf
 
-MailBody = MailBody & "<p>From <a class=""standardsButton"" href=""http://ws.arin.net/cgi-bin/whois.pl?queryinput=" & Request.ServerVariables("REMOTE_ADDR") & """>" & Request.ServerVariables("REMOTE_ADDR") & "</a></p>" & VbCrlf
+MailBody = MailBody & "<p>From <a class=""standardsButton"" href=""http://whois.domaintools.com/" & Request.ServerVariables("REMOTE_ADDR") & """>" & Request.ServerVariables("REMOTE_ADDR") & "</a></p>" & VbCrlf
 
 MailBody = MailBody & "</Center>" & VbCrlf
 MailBody = MailBody & "</DIV>" & VbCrlf

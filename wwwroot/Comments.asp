@@ -40,7 +40,9 @@ Response.Buffer = True
 '-- The header looks this up for the page title --'
 Dim Requested '-- The EntryID of the entry the user wants to view --'
 Requested = Request.Querystring("Entry")
-If (IsNumeric(Requested) = False) OR (Len(Requested) = 0) OR (Instr(Requested,"-") > 0) Then Requested = 0
+Requested = Replace(Requested,"-","")
+Requested = Replace(Requested,",","")
+If (IsNumeric(Requested) = False) OR (Len(Requested) = 0) Then Requested = 0
 PageTitleEntryRequest = Requested
 PageTitle = " - Comments"
 
@@ -716,9 +718,9 @@ Records.AddNew
   '-- Record locking problems --'
   If Err.Number = -2147217887 Then
       
-   '-- Keep trying for 3 seconds --'
+   '-- Keep trying for 20 seconds --'
    Dim EndTime
-   EndTime = DateAdd("s", 3, Now())
+   EndTime = DateAdd("s", 20, Now())
    Do While (Now() < EndTime)
     Err.Clear
     Records.AddNew
@@ -738,9 +740,9 @@ Records("Name") = Left(Name,50)
 Records("Email") = Left(Request.Form("Email"),50)
 Records("Homepage") = Left(Homepage,50)
 
-'## This will automatically add the REMOTE_ADDR just incase the "Forwarded For" Address Is Spoofed ##'
+'## This will automatically add the REMOTE_ADDR just in case the "Forwarded For" Address Is Spoofed ##'
 If MyIPAddress <> Request.ServerVariables("REMOTE_ADDR") Then
- Records("Content") = Content & " <!-- Proxy Servers ORIGINAL Address : " & Request.ServerVariables("REMOTE_ADDR") & "-->"
+ Records("Content") = Content & " <!-- Proxy Server's ORIGINAL Address : " & Request.ServerVariables("REMOTE_ADDR") & "-->"
 Else
  Records("Content") = Content
 End If
@@ -767,8 +769,27 @@ Records("UTCTimeZoneOffset") = OffsetTime
 
 Records("IP") = MyIPAddress
 
+On Error Resume Next
 Records.Update
+
+  '-- Record locking problems --'
+  If Err.Number = -2147217887 Then
+      
+   '-- Keep trying for 3 seconds --'
+   EndTime = DateAdd("s", 3, Now())
+   Do While (Now() < EndTime)
+    Err.Clear
+    Records.Update
+	If Err.Number = 0 Then Exit Do
+   Loop
+  End If
  
+  If Err.Number <> 0 Then WasError = True 
+ On Error GoTo 0
+
+'-- Force it again so we get our server error page if needs be --'
+If WasError Then Records.Update
+
 CommentID = Records("CommentID")
 
 Dim PUK

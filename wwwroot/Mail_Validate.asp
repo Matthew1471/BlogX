@@ -59,7 +59,7 @@ SQL = "SELECT RecordID, FromEmail, Subject, Body, IP, PUK FROM Mail_Unvalidated 
  If Session(CookieName) = False Then SQL = SQL & "AND (IP='" & Replace(MyIPAddress,"'","") & "')"
 SQL = SQL & "AND (PUK=" & PUK & ");"
 
-'--- Open Database ---'
+'-- Open the records ready to write. --'
 Records.Open SQL, Database, 1, 3
 
 If Not (Records.EOF = True) Then
