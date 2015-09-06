@@ -67,7 +67,7 @@ PreviousDay = "0"
 Dim RecordID, Title, Text, Password, CommentsCount
 Dim DayPosted, MonthPosted, YearPosted, TimePosted
 Dim NewTime, JustDoIt
-		
+
 ' Loop through records until it's a next page or End of Records
 Do Until (Records.EOF or Records.AbsolutePage <> nPage )
 
@@ -122,7 +122,7 @@ If Minute(TimePosted) < 10 Then NewTime = NewTime & "0"
 NewTime = NewTime & Minute(TimePosted)
 End If
 
-If (DayPosted <> PreviousDay) AND (NoDate <> 1) Then
+If (DayPosted & MonthPosted <> PreviousDay) AND (NoDate <> 1) Then
 Response.Write vbcrlf & "<!--- Start Date Header --->" & vbcrlf
 Response.Write "<DIV class=date id=2003-11-30>" & vbcrlf
 Response.Write "<H2 class=dateHeader>" & Left(MonthName(MonthPosted),3) & " " & DayPosted & ", " & YearPosted & " (Only #" & Replace(Category, "%20", " ") & ")</H2>" & vbcrlf
@@ -145,7 +145,7 @@ If (EnableEmail = True) AND (LegacyMode <> True) Then Response.Write "<acronym t
 | <SPAN class=categories>#<%=Replace(Category, "%20", " ")%></SPAN></P></DIV>
 <!--- End Content --->
 <%
-PreviousDay = DayPosted
+PreviousDay = DayPosted & MonthPosted
 Records.MoveNext
 If JustDoIt = True Then Response.Write "</Div>"
 Loop

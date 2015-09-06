@@ -533,7 +533,7 @@ Case 2
   '-- This is our general table checker, if we have allowed an upgrade we also call other methods and perform them --'
   Function IsTableOK(strClassString, strClassString2)
 
-   'On Error Resume Next
+   On Error Resume Next
 
     '-- Default Values --'
     LastTableError = ""
@@ -663,7 +663,7 @@ Case 2
   TheTables(7,1)  = "Title, Text"
 
   TheTables(8,0)  = "FileExtensions"
-  TheTables(8,1)  = "AllowedExtension"
+  TheTables(8,1)  = "AllowedExtension, Picture"
 
   TheTables(9,0)  = "Links"
   TheTables(9,1)  = "LinkID, LinkName, LinkURL, LinkRSS, LinkType"
@@ -672,13 +672,13 @@ Case 2
   TheTables(10,1)  = "RecordID, FromEmail, Subject, Body, IP, PUK"
 
   TheTables(11,0)  = "MailingList"
-  TheTables(11,1)  = "EmailID, SubscriberAddress, SubscriberIP, PUK, Active"
+  TheTables(11,1)  = "SubscriberAddress, SubscriberIP, PUK, Active"
 
   TheTables(12,0)  = "Main"
   TheTables(12,1)  = "MainID, MainText, LastModified"
 
   TheTables(13,0)  = "NotFound"
-  TheTables(13,1)  = "ID, URL, ReferringPage, ErrorCount"
+  TheTables(13,1)  = "URL, ReferringPage, ErrorCount"
 
   TheTables(14,0)  = "PingBack"
   TheTables(14,1)  = "PingBackID, EntryID, SourceURI, Error, IP"
