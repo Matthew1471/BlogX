@@ -1,0 +1,512 @@
+body
+{
+  font-family:Trebuchet, Sans-Serif;
+  font-size: 9pt;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: #696;
+}
+
+p
+{
+  line-height: 1.25em;
+}
+
+a
+{
+  font-weight: normal;
+  text-decoration: none;
+  color: #9c9;
+}
+
+a:hover
+{
+  text-decoration: underline;
+  color: #cfc;
+}
+
+a:active
+{
+  color: #ffc;
+}
+
+a:visited
+{
+  color: #cfc;
+}
+
+.entryTitle a
+{
+    color: Black;
+}
+
+/* Maintain formatting in tags which don't inherit normally */
+table, input, select, textarea
+{
+  font-family: Trebuchet, Sans-Serif;
+  font-size: 1em;  
+}
+
+input, select, textarea
+{
+  vertical-align: middle;
+}
+
+/* Weblog title and byline */
+div#header
+{
+  background: #363;
+  color: #696;
+  padding: .5em 0;
+  margin-bottom: 1em;
+  position: relative;
+}
+div#header h1
+{
+  font-size: 3em;  
+}
+
+div#header p#sideTitle
+{
+    position: absolute;
+    right: 12px;
+    text-align: right;
+    top: 2.5em;
+}
+.blogTitleSub, .blogTitleSubDisclaimer
+{
+    display: block;
+}
+
+h1#title, p#byline
+{
+  margin: 0 12px;
+}
+
+p#byline
+{
+  font-style: italic;
+  color: #cc9;
+}
+
+
+
+/* Entries */
+div#content
+{
+  margin: .5em 1.5em;
+  width: 60%;
+  float: left;
+}
+
+/* Date  */
+div.date
+{
+  padding: 0;
+  margin-bottom: 1em;
+}
+
+div.date h2
+{
+  color: #f90;
+  border: 1px dotted #f90;
+  text-align: left;
+  font-style: normal;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0 0 .25em 0;
+  padding-left: .25em;
+}
+
+/* entry view */
+div.entry
+{
+  border: 1px dotted #363;
+  margin-bottom: 3.5em;
+  margin-right: 4em;
+}
+
+h3.entryTitle
+{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: normal;
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size: 16px;
+  color: black;
+  padding: .2em;
+}
+h3.entryTitle a
+{
+  color: black;
+}
+h3.entryTitle a:visited
+{
+  color: black;
+}
+h3.entryTitle a:hover
+{
+  color: black;
+}
+
+div.entryBody
+{
+  padding: .5em;
+  font: 11px/1.5em Verdana, Trebuchet, Arial, sans-serif;
+}
+
+div.entryBody p
+{
+  margin-top: .2em;
+  font: 11px/1.5em Verdana, Trebuchet, Arial, sans-serif;
+}
+
+div.entryBody strong
+{
+  font-weight: bold;
+  color: #030;
+}
+
+div.entryBody p.quotation
+{
+  font-style: italic;
+  margin: .5em 4em 1em 4em;
+}
+
+p.permalink
+{
+  float: right;
+}
+
+p.entryFooter
+{
+  font-size: .9em;
+  text-align: right;
+  margin: 0 .5em 0 0;
+  color: #333;
+}
+
+/* comment view */
+div.comment
+{
+  border: 1px dotted #363;
+  margin-bottom: 3.5em;
+  margin-right: 4em;
+}
+
+h3.commentTitle
+{
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family:Verdana, Sans-Serif;
+  font-size: 1.0em;
+  color: black;
+  padding: .2em;
+}
+
+div.commentBody
+{
+  padding: .5em;
+}
+
+div.commentBody p
+{
+  margin-top: .2em;
+}
+p.commentFooter
+{
+  font-size: .9em;
+  text-align: right;
+  margin: .5em;
+}
+div.commentBody form p
+{
+    margin: 0em;
+    line-height:1em;
+}
+div.commentBody form textarea
+{
+    width: 75%;
+    height:7em;
+}
+
+p.entryfooter a
+{
+  color: #333;
+}
+p.entryfooter a:visited
+{
+ color: #333;
+}
+p.entryfooter a:active
+{
+  color: #333;
+}
+p.entryfooter a:hover
+{
+  color: #333;
+}
+
+p.categories
+{
+  float: right;
+  padding-right: 1em;
+}
+
+p.comments
+{
+}
+
+
+
+
+/* Calendar and Blog roll */
+div.sidebar
+{
+  font-size: smaller;
+  float: left;
+}
+
+div.sidebar ul
+{
+  list-style: none;
+  margin: .5em;
+}
+
+div.section, table.navCalendar
+{
+  margin: .5em 2em;
+  margin-bottom: 2em;
+  border: 1px solid #363;
+}
+
+div.section h3
+{
+  text-transform:uppercase;
+  color: #030;
+  margin: 0;
+  background: #363;
+  padding: .2em;
+  font-size: 1.2em;
+}
+
+/* Calendar stuff */
+table.blogCal a
+{
+  color: #666;
+}
+
+
+table.navCalendar table td 
+{
+    font-size:8pt;
+}
+
+.navTodayStyle
+{
+  background:#eee;
+}
+.navSelectorStyle
+{
+  background:#9c9;
+}
+.navDayStyle
+{
+}
+.navNextPrevStyle
+{
+  vertical-align:baseline;
+
+}
+.navDayHeader
+{
+  font-weight:bold;
+}
+.navSelectedDayStyle
+{
+  font-weight:bold;
+}
+.navTitleStyle
+{
+  font-weight:bold;
+}
+.navWeekendDayStyle
+{
+
+}
+.navOtherMonthDayStyle
+{
+  background:#7a7;
+}
+.navCalendar
+{
+  border-color:#eee;
+}
+
+
+
+div.section form
+{
+  margin: .5em;
+}
+
+div#login p
+{
+  margin: .2em 0;  
+}
+
+
+/* Copyright messages */
+div#footer
+{
+  clear: both;
+  font-size: smaller;
+  margin: .5em 2em;
+  padding: .5em 2em;
+}
+
+div#footer p
+{
+  margin: .2em 0;
+}
+a.standardsButton
+{
+    border:1px solid;
+    border-color:#ffc8a4 #7d3302 #3f1a01 #ff9a57;
+    padding:0px 3px 0px 3px;
+    font:bold 10px verdana,sans-serif; 
+    color:#FFFFFF; background-color:#ff6600;
+    text-decoration:none;
+    margin:0px;
+}
+a.standardsButton:hover
+{
+    border:1px solid;
+    border-color:#ffc8a4 #7d3302 #3f1a01 #ff9a57;
+    padding:0px 3px 0px 3px;
+    font:bold 10px verdana,sans-serif; 
+    color:#FFFFFF; background-color:#ff6600;
+    text-decoration:none;
+    margin:0px;
+}
+a.standardsButton:visited
+{
+    border:1px solid;
+    border-color:#ffc8a4 #7d3302 #3f1a01 #ff9a57;
+    padding:0px 3px 0px 3px;
+    font:bold 10px verdana,sans-serif; 
+    color:#FFFFFF; background-color:#ff6600;
+    text-decoration:none;
+    margin:0px;
+}
+
+/*-- Fake IE Information Bar --*/
+
+body {
+	/* overflow: hidden; */
+	margin: 0 !important;
+	padding: 0 !important; /* required for Opera to have 0 margin */
+}
+
+#infobar {
+    font-size: .9em;
+    font-family: Verdana, Geneva, sans-serif;
+    font-weight: normal;
+
+    /* CSS 2, so theoretically it will be ignored in non compliant browsers */
+    font: message-box;
+}
+
+#infobar a, #infobar a:link, #infobar a:visited, #infobar a:active {
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+    color: InfoText;
+    background: InfoBackground url(/Images/warning.gif) no-repeat fixed .3em .3em;
+    padding: .45em .3em .45em 2em;
+    border-bottom: .16em outset;
+    text-decoration: none;
+    cursor: default;
+    font-weight: normal;
+}
+
+#infobar a:hover {
+    color: HighlightText;
+    background: Highlight url(/Images/warning2.gif) no-repeat fixed .3em .3em;
+}
+
+/* A fake viewplot for IE information bar */
+#viewplot {
+    width: 100%;
+    padding: 1em;   /* Please set this to the value as that of your <body> */
+}
+
+/* -- Photo CSS --*/
+
+.photo_left {
+  clear: left; 
+  float: left;
+  padding: 2px 10px 5px 0px; 
+  width: 180px; }
+
+.photo_img {
+  margin: 0px;
+  padding: 0px; }
+
+.clear_left {
+  clear: right; }
+
+/* image shadow */
+.dropshadow {
+  clear: both;
+  float:left;
+  background: url(/Images/shadowAlpha.png) no-repeat bottom right !important;
+  background: url(/Images/shadow.gif) no-repeat bottom right;
+  margin: 10px 13px 0 6px !important;
+  margin: 20px 7px 0 3px;
+
+}
+
+.dropshadow img
+{
+	display: inline;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
+/* image shadow */
+.dropshadowr {
+  clear: both;
+  float:right;
+  background: url(/Images/shadowAlpha.png) no-repeat bottom right !important;
+  background: url(/Images/shadow.gif) no-repeat bottom right;
+  margin: 20px 6px 0 30px !important;
+  margin: 30px 3px 0 20px;
+
+
+}
+
+.dropshadowr  img
+{
+	display: block;
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	margin: -6px 6px 6px -6px;
+	padding: 4px;
+}
+
+.adHeadline {font: bold 10pt Arial; text-decoration: underline; color: blue;}
+.adText {font: normal 10pt Arial; text-decoration: none; color: black;}
+
+#AdvancedTools{ 
+display : inline;
+}
+#AdvancedButton{ 
+display : none;
+}
